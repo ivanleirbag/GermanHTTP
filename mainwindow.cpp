@@ -40,6 +40,9 @@ void MainWindow::onClientRequest()
 {
     int count;
     QByteArray dataSent;
+    QString strDataSent;
+    QString requestLines;
+    QStringList reqstLinesTokens;
 
     QTcpSocket *client = static_cast<QTcpSocket *>(QObject::sender());
 
@@ -49,8 +52,17 @@ void MainWindow::onClientRequest()
     }
 
     dataSent = client->readAll();
+    strDataSent = QString(dataSent);
 
-    ui->plainTextEdit->appendPlainText(QString(dataSent));
+    ui->plainTextEdit->appendPlainText(strDataSent);
+
+    //REQUEST EXTRACTION
+    requestLines = strDataSent.split("\r\n")[0];
+
+    //METHOD PROCESSING
+    reqstLinesTokens = requestLines.split(" ");
+
+
 }
 
 void MainWindow::onClientDisconnect()
