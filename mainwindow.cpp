@@ -36,35 +36,6 @@ void MainWindow::onNewConnection()
     writeLogFile();
 }
 
-void MainWindow::onClientRequest()
-{
-    int count;
-    QByteArray dataSent;
-    QString strDataSent;
-    QString requestLines;
-    QStringList reqstLinesTokens;
-
-    QTcpSocket *client = static_cast<QTcpSocket *>(QObject::sender());
-
-    count = client->bytesAvailable();
-    if(count <= 0){
-        return;
-    }
-
-    dataSent = client->readAll();
-    strDataSent = QString(dataSent);
-
-    ui->plainTextEdit->appendPlainText(strDataSent);
-
-    //REQUEST EXTRACTION
-    requestLines = strDataSent.split("\r\n")[0];
-
-    //METHOD PROCESSING
-    reqstLinesTokens = requestLines.split(" ");
-
-
-}
-
 void MainWindow::onClientDisconnect()
 {
     int clientIndex;
@@ -150,5 +121,93 @@ void MainWindow::on_OpenPortBttn_clicked()
         }
     }
     writeLogFile();
+}
+
+void MainWindow::onClientRequest()
+{
+    int count;
+    QByteArray dataSent;
+    QString strDataSent;
+    QString requestLines;
+    QStringList reqstLinesTokens;
+
+    QTcpSocket *client = static_cast<QTcpSocket *>(QObject::sender());
+
+    count = client->bytesAvailable();
+    if(count <= 0){
+        return;
+    }
+
+    dataSent = client->readAll();
+    strDataSent = QString(dataSent);
+
+    ui->plainTextEdit->appendPlainText(strDataSent);
+
+    //REQUEST EXTRACTION
+    requestLines = strDataSent.split("\r\n")[0];
+
+    //METHOD PROCESSING
+    reqstLinesTokens = requestLines.split(" ");
+
+    if(reqstLinesTokens[0] == "GET"){
+        QString response = onClientReqstGET(reqstLinesTokens[1]);
+        client->write(response.toUtf8().data(), response.length());
+        client->flush();
+    }
+}
+
+QString MainWindow::onClientReqstGET(QString route)
+{
+    QFile fileRequested;
+    QByteArray fileContent;
+    QString fileDir = workingDir + "/htdocs";
+    QString body, header, response;
+    quint16 contentSize;
+
+    if(route == "/"){
+        fileDir = fileDir + "/index.html";
+    }
+    else{
+        //
+    }
+
+    fileRequested.setFileName(fileDir);
+
+    if(fileRequested.open(QFile::ReadOnly | QFile::Text)){
+        fileContent = fileRequested.readAll();
+        contentSize = fileContent.size();
+
+        header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n";
+        QTextStream(&header)<<"Content-Length: "<<contentSize<<"\r\n";
+        QTextStream(&header)<<"Connection: keep-alive\r\n\r\n";
+        body = QString::fromUtf8(fileContent);
+        response = header + body;
+
+        fileRequested.close();
+    }
+    else{
+        header = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n";
+        body = "<html><body><h1>404 Not Found</h1></body></html>";
+        response = header + body;
+    }
+
+    ui->plainTextEdit->appendPlainText(response);
+    writeLogFile();
+    return response;
+}
+
+void MainWindow::onClientReqstPOST()
+{
+
+}
+
+void MainWindow::onClientReqstPUT()
+{
+
+}
+
+void MainWindow::onClientReqstDELETE()
+{
+
 }
 
