@@ -150,48 +150,68 @@ void MainWindow::onClientRequest()
     reqstLinesTokens = requestLines.split(" ");
 
     if(reqstLinesTokens[0] == "GET"){
-        QString response = onClientReqstGET(reqstLinesTokens[1]);
-        client->write(response.toUtf8().data(), response.length());
+        QByteArray response = onClientReqstGET(reqstLinesTokens[1]);
+        client->write(response, response.size());
         client->flush();
     }
 }
 
-QString MainWindow::onClientReqstGET(QString route)
+QByteArray MainWindow::onClientReqstGET(QString route)
 {
     QFile fileRequested;
     QByteArray fileContent;
     QString fileDir = workingDir + "/htdocs";
-    QString body, header, response;
+    QString header;
+    QByteArray response;
     quint16 contentSize;
 
     if(route == "/"){
         fileDir = fileDir + "/index.html";
     }
     else{
-        //
+        fileDir = fileDir + route;
     }
 
     fileRequested.setFileName(fileDir);
 
-    if(fileRequested.open(QFile::ReadOnly | QFile::Text)){
+    if(fileRequested.open(QFile::ReadOnly)){
         fileContent = fileRequested.readAll();
         contentSize = fileContent.size();
 
-        header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n";
+        if (fileDir.endsWith(".png", Qt::CaseInsensitive)) {
+            header = "HTTP/1.1 200 OK\r\nContent-Type: image/png\r\n";
+        }
+        else if (fileDir.endsWith(".html", Qt::CaseInsensitive)) {
+            header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n";
+        }
+        else if(fileDir.endsWith(".jpg", Qt::CaseInsensitive) || fileDir.endsWith(".jpeg", Qt::CaseInsensitive)){
+            header = "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\n";
+        }
+        else if(fileDir.endsWith(".css", Qt::CaseInsensitive)){
+            header = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n";
+        }
+        else{
+            header = "HTTP/1.1 415 Unsupported Media Type\r\n\r\n";
+            response.append(header.toUtf8());
+            return response;
+        }
+
         QTextStream(&header)<<"Content-Length: "<<contentSize<<"\r\n";
         QTextStream(&header)<<"Connection: keep-alive\r\n\r\n";
-        body = QString::fromUtf8(fileContent);
-        response = header + body;
+
+        response.append(header.toUtf8());
+        response.append(fileContent);
 
         fileRequested.close();
     }
     else{
         header = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n";
-        body = "<html><body><h1>404 Not Found</h1></body></html>";
-        response = header + body;
+        QString body = "<html><body><h1>404 Not Found</h1></body></html>";
+        response.append(header.toUtf8());
+        response.append(body.toUtf8());
     }
 
-    ui->plainTextEdit->appendPlainText(response);
+    ui->plainTextEdit->appendPlainText((header));
     writeLogFile();
     return response;
 }

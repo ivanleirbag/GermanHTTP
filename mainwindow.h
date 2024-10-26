@@ -40,7 +40,7 @@ private slots:
 
     void on_OpenPortBttn_clicked();
 
-    QString onClientReqstGET(QString route);
+    QByteArray onClientReqstGET(QString route);
     void onClientReqstPOST();
     void onClientReqstPUT();
     void onClientReqstDELETE();
