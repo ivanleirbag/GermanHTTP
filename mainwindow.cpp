@@ -151,6 +151,18 @@ void MainWindow::onClientRequest()
 
     if(reqstLinesTokens[0] == "GET"){
         QByteArray response = onClientReqstGET(reqstLinesTokens[1]);
+
+        qint64 bytesSent = 0;
+        qint64 totalBytes = response.size();
+        while (bytesSent < totalBytes) {
+            //DATA IS SENT IN CHUNKS
+            qint64 chunkSize = client->write(response.mid(bytesSent, 4096));
+            if (chunkSize == -1) {
+                ui->plainTextEdit->appendPlainText("ERROR: An error occured during data transmition.");
+                return;
+            }
+            bytesSent += chunkSize;
+        }
         client->write(response, response.size());
         client->flush();
     }
