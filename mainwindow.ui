@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
+    <width>645</width>
     <height>603</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>C++ HTTP Server</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPlainTextEdit" name="plainTextEdit">
@@ -29,7 +29,7 @@
      <rect>
       <x>470</x>
       <y>20</y>
-      <width>321</width>
+      <width>151</width>
       <height>91</height>
      </rect>
     </property>
@@ -77,7 +77,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>805</width>
+     <width>645</width>
      <height>20</height>
     </rect>
    </property>
