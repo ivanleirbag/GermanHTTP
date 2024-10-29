@@ -162,10 +162,11 @@ void MainWindow::onClientRequest()
                 return;
             }
             bytesSent += chunkSize;
+            client->flush();
         }
-        client->write(response, response.size());
-        client->flush();
+        client->waitForBytesWritten();
     }
+    client->disconnectFromHost();
 }
 
 QByteArray MainWindow::onClientReqstGET(QString route)
@@ -208,7 +209,7 @@ QByteArray MainWindow::onClientReqstGET(QString route)
             return response;
         }
 
-        QTextStream(&header)<<"Content-Length: "<<contentSize<<"\r\n";
+        QTextStream(&header)<<"Content-Length: "<<QString::number(contentSize)<<"\r\n";
         QTextStream(&header)<<"Connection: keep-alive\r\n\r\n";
 
         response.append(header.toUtf8());

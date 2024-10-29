@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QRegularExpression>
 
 
 #include <QtNetwork/QTcpServer>
