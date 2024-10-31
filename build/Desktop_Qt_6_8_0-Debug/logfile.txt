@@ -1,13 +1,13 @@
 Oppenning port 8080...
 Successfully oppened port 8080.
-CONNECTING: ::ffff:127.0.0.1: 40988
+CONNECTING: ::ffff:127.0.0.1: 56994
 GET / HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Upgrade-Insecure-Requests: 1
 Sec-Fetch-Dest: document
 Sec-Fetch-Mode: navigate
@@ -18,42 +18,25 @@ Priority: u=0, i
 
 HTTP/1.1 200 OK
 Content-Type: text/html
-Content-Length: 16386
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 40988
-CONNECTING: ::ffff:127.0.0.1: 40990
-CONNECTING: ::ffff:127.0.0.1: 41000
-GET /styles/font.css HTTP/1.1
-Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: text/css,*/*;q=0.1
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Connection: keep-alive
-Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
-Sec-Fetch-Dest: style
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-Priority: u=2
-
-
-HTTP/1.1 200 OK
-Content-Type: text/css
-Content-Length: 1015
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:127.0.0.1: 40990
+DISCONNECTING: ::ffff:127.0.0.1: 56994
+CONNECTING: ::ffff:127.0.0.1: 56998
+CONNECTING: ::ffff:127.0.0.1: 57002
+CONNECTING: ::ffff:127.0.0.1: 57010
+CONNECTING: ::ffff:127.0.0.1: 57026
+CONNECTING: ::ffff:127.0.0.1: 57034
+CONNECTING: ::ffff:127.0.0.1: 57038
 GET /styles/style.css HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: text/css,*/*;q=0.1
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Sec-Fetch-Dest: style
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -62,21 +45,280 @@ Priority: u=2
 
 HTTP/1.1 200 OK
 Content-Type: text/css
-Content-Length: 7333
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41000
-CONNECTING: ::ffff:127.0.0.1: 41012
-CONNECTING: ::ffff:127.0.0.1: 41028
-GET /assets/misc/separador.png HTTP/1.1
+DISCONNECTING: ::ffff:127.0.0.1: 57034
+GET /styles/font.css HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57038
+GET /assets/misc/separador.png HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57026
+GET /assets/invitados/invitado2.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57002
+GET /assets/invitados/invitado1.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57010
+GET /assets/invitados/invitado3.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 56998
+CONNECTING: ::ffff:127.0.0.1: 57044
+CONNECTING: ::ffff:127.0.0.1: 57058
+CONNECTING: ::ffff:127.0.0.1: 57072
+GET /assets/invitados/invitado4.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57044
+GET /assets/invitados/invitado5.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57058
+GET /assets/invitados/invitado6.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57072
+CONNECTING: ::ffff:127.0.0.1: 57086
+GET /assets/misc/encabezado.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/styles/style.css
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=4, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 57086
+CONNECTING: ::ffff:127.0.0.1: 37676
+GET / HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 37676
+CONNECTING: ::ffff:127.0.0.1: 37686
+CONNECTING: ::ffff:127.0.0.1: 37702
+GET /styles/style.css HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 37686
+GET /styles/font.css HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 37702
+CONNECTING: ::ffff:127.0.0.1: 37710
+GET /assets/misc/separador.png HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -85,44 +327,21 @@ Priority: u=5
 
 HTTP/1.1 200 OK
 Content-Type: image/png
-Content-Length: 445
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41012
-GET /assets/invitados/invitado1.jpg HTTP/1.1
-Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Connection: keep-alive
-Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-Priority: u=5
-
-
-HTTP/1.1 200 OK
-Content-Type: image/jpeg
-Content-Length: 24110
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:127.0.0.1: 41028
-CONNECTING: ::ffff:127.0.0.1: 41038
-CONNECTING: ::ffff:127.0.0.1: 41050
-CONNECTING: ::ffff:127.0.0.1: 41062
-CONNECTING: ::ffff:127.0.0.1: 41078
+DISCONNECTING: ::ffff:127.0.0.1: 37710
+CONNECTING: ::ffff:127.0.0.1: 37716
+CONNECTING: ::ffff:127.0.0.1: 37722
 GET /assets/invitados/invitado2.jpg HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -131,19 +350,19 @@ Priority: u=5
 
 HTTP/1.1 200 OK
 Content-Type: image/jpeg
-Content-Length: 23126
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41078
-GET /assets/invitados/invitado5.jpg HTTP/1.1
+DISCONNECTING: ::ffff:127.0.0.1: 37716
+GET /assets/invitados/invitado1.jpg HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -152,40 +371,20 @@ Priority: u=5
 
 HTTP/1.1 200 OK
 Content-Type: image/jpeg
-Content-Length: 31702
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41038
-GET /assets/invitados/invitado4.jpg HTTP/1.1
-Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Connection: keep-alive
-Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
-Sec-Fetch-Dest: image
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: same-origin
-Priority: u=5
-
-
-HTTP/1.1 200 OK
-Content-Type: image/jpeg
-Content-Length: 26265
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:127.0.0.1: 41050
+DISCONNECTING: ::ffff:127.0.0.1: 37722
+CONNECTING: ::ffff:127.0.0.1: 37726
 GET /assets/invitados/invitado3.jpg HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -194,20 +393,64 @@ Priority: u=5
 
 HTTP/1.1 200 OK
 Content-Type: image/jpeg
-Content-Length: 13800
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41062
-CONNECTING: ::ffff:127.0.0.1: 41090
+DISCONNECTING: ::ffff:127.0.0.1: 37726
+CONNECTING: ::ffff:127.0.0.1: 37742
+CONNECTING: ::ffff:127.0.0.1: 37758
+CONNECTING: ::ffff:127.0.0.1: 37762
+GET /assets/invitados/invitado4.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 37742
+GET /assets/invitados/invitado5.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 37758
 GET /assets/invitados/invitado6.jpg HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -216,20 +459,20 @@ Priority: u=5
 
 HTTP/1.1 200 OK
 Content-Type: image/jpeg
-Content-Length: 18738
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41090
-CONNECTING: ::ffff:127.0.0.1: 41102
+DISCONNECTING: ::ffff:127.0.0.1: 37762
+CONNECTING: ::ffff:127.0.0.1: 37766
 GET /assets/misc/encabezado.jpg HTTP/1.1
 Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/styles/style.css
-Cookie: PHPSESSID=bb81699qi4cqj0rhlcg7qrosg4
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: same-origin
@@ -238,12 +481,14 @@ Priority: u=5
 
 HTTP/1.1 200 OK
 Content-Type: image/jpeg
-Content-Length: 20473
+Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 41102
-CONNECTING: ::ffff:127.0.0.1: 41116
-DISCONNECTING: ::ffff:127.0.0.1: 41116
-Closing port 8080...
-Successfully closed port 8080.
+DISCONNECTING: ::ffff:127.0.0.1: 37766
+CONNECTING: ::ffff:127.0.0.1: 42442
+DISCONNECTING: ::ffff:127.0.0.1: 42442
+CONNECTING: ::ffff:127.0.0.1: 46250
+DISCONNECTING: ::ffff:127.0.0.1: 46250
+CONNECTING: ::ffff:127.0.0.1: 50636
+DISCONNECTING: ::ffff:127.0.0.1: 50636

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+//PeerPort o PeerAddress
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -35,6 +37,7 @@ void MainWindow::onNewConnection()
     ui->plainTextEdit->appendPlainText(clientStr);
     writeLogFile();
 }
+
 
 void MainWindow::onClientDisconnect()
 {
@@ -150,33 +153,18 @@ void MainWindow::onClientRequest()
     reqstLinesTokens = requestLines.split(" ");
 
     if(reqstLinesTokens[0] == "GET"){
-        QByteArray response = onClientReqstGET(reqstLinesTokens[1]);
-
-        qint64 bytesSent = 0;
-        qint64 totalBytes = response.size();
-        while (bytesSent < totalBytes) {
-            //DATA IS SENT IN CHUNKS
-            qint64 chunkSize = client->write(response.mid(bytesSent, 4096));
-            if (chunkSize == -1) {
-                ui->plainTextEdit->appendPlainText("ERROR: An error occured during data transmition.");
-                return;
-            }
-            bytesSent += chunkSize;
-            client->flush();
-        }
+        onClientReqstGET(reqstLinesTokens[1], client);
         client->waitForBytesWritten();
     }
     client->disconnectFromHost();
 }
 
-QByteArray MainWindow::onClientReqstGET(QString route)
+void MainWindow::onClientReqstGET(QString route,  QTcpSocket* client)
 {
     QFile fileRequested;
-    QByteArray fileContent;
     QString fileDir = workingDir + "/htdocs";
     QString header;
     QByteArray response;
-    quint16 contentSize;
 
     if(route == "/"){
         fileDir = fileDir + "/index.html";
@@ -187,46 +175,67 @@ QByteArray MainWindow::onClientReqstGET(QString route)
 
     fileRequested.setFileName(fileDir);
 
-    if(fileRequested.open(QFile::ReadOnly)){
-        fileContent = fileRequested.readAll();
-        contentSize = fileContent.size();
+    if (!fileRequested.open(QFile::ReadOnly)) {
+        header = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n";
+        client->write(header.toUtf8());
+        client->flush();
+        ui->plainTextEdit->appendPlainText((header));
+        writeLogFile();
+        return;
+    }
 
-        if (fileDir.endsWith(".png", Qt::CaseInsensitive)) {
-            header = "HTTP/1.1 200 OK\r\nContent-Type: image/png\r\n";
-        }
-        else if (fileDir.endsWith(".html", Qt::CaseInsensitive)) {
-            header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n";
-        }
-        else if(fileDir.endsWith(".jpg", Qt::CaseInsensitive) || fileDir.endsWith(".jpeg", Qt::CaseInsensitive)){
-            header = "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\n";
-        }
-        else if(fileDir.endsWith(".css", Qt::CaseInsensitive)){
-            header = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n";
-        }
-        else{
-            header = "HTTP/1.1 415 Unsupported Media Type\r\n\r\n";
-            response.append(header.toUtf8());
-            return response;
-        }
-
-        QTextStream(&header)<<"Content-Length: "<<QString::number(contentSize)<<"\r\n";
-        QTextStream(&header)<<"Connection: keep-alive\r\n\r\n";
-
-        response.append(header.toUtf8());
-        response.append(fileContent);
-
-        fileRequested.close();
+    if (fileDir.endsWith(".png", Qt::CaseInsensitive)) {
+        header = "HTTP/1.1 200 OK\r\nContent-Type: image/png\r\n";
+    }
+    else if (fileDir.endsWith(".html", Qt::CaseInsensitive)) {
+        header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n";
+    }
+    else if(fileDir.endsWith(".jpg", Qt::CaseInsensitive) || fileDir.endsWith(".jpeg", Qt::CaseInsensitive)){
+        header = "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\n";
+    }
+    else if(fileDir.endsWith(".css", Qt::CaseInsensitive)){
+        header = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n";
     }
     else{
+        header = "HTTP/1.1 415 Unsupported Media Type\r\n\r\n";
+        response.append(header.toUtf8());
+        client->write(header.toUtf8());
+        client->flush();
+        ui->plainTextEdit->appendPlainText((header));
+        writeLogFile();
+        return;
+    }
+
+
+    //DATA IS ALWAYS SENT IN CHUNKS FOR INTEGRITY
+    header += "Transfer-Encoding: chunked\r\n";
+    header += "Connection: keep-alive\r\n\r\n";
+    client->write(header.toUtf8());
+    client->flush();
+
+    const qint64 chunkSize = 4096;
+    while (!fileRequested.atEnd()) {
+        QByteArray chunk = fileRequested.read(chunkSize);
+        QString chunkHeader = QString::number(chunk.size(), 16) + "\r\n";//CHUNK SIZE HAS TO BE IN HEX
+        client->write(chunkHeader.toUtf8());
+        client->write(chunk);
+        client->write("\r\n");
+        client->flush();
+    }
+
+    client->write("0\r\n\r\n");  // Last chunk with size 0
+    client->flush();
+
+    fileRequested.close();
+    ui->plainTextEdit->appendPlainText((header));
+    writeLogFile();
+
+    /*else{
         header = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n";
         QString body = "<html><body><h1>404 Not Found</h1></body></html>";
         response.append(header.toUtf8());
         response.append(body.toUtf8());
-    }
-
-    ui->plainTextEdit->appendPlainText((header));
-    writeLogFile();
-    return response;
+    }*/
 }
 
 void MainWindow::onClientReqstPOST()

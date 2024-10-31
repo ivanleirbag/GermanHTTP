@@ -33,6 +33,9 @@ public:
 private slots:
 
     //SERVER FUNCS
+    /**
+     * @brief onNewConnection
+     */
     void onNewConnection();
     void onClientRequest();
     void onClientDisconnect();
@@ -41,7 +44,7 @@ private slots:
 
     void on_OpenPortBttn_clicked();
 
-    QByteArray onClientReqstGET(QString route);
+    void onClientReqstGET(QString route, QTcpSocket *client);
     void onClientReqstPOST();
     void onClientReqstPUT();
     void onClientReqstDELETE();
