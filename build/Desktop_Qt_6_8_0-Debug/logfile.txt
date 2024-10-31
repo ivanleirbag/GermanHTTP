@@ -492,3 +492,5 @@ CONNECTING: ::ffff:127.0.0.1: 46250
 DISCONNECTING: ::ffff:127.0.0.1: 46250
 CONNECTING: ::ffff:127.0.0.1: 50636
 DISCONNECTING: ::ffff:127.0.0.1: 50636
+Closing port 8080...
+Successfully closed port 8080.

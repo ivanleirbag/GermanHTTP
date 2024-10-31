@@ -223,19 +223,12 @@ void MainWindow::onClientReqstGET(QString route,  QTcpSocket* client)
         client->flush();
     }
 
-    client->write("0\r\n\r\n");  // Last chunk with size 0
+    client->write("0\r\n\r\n");  //LAST CHUNCK WITH SIZE 0
     client->flush();
 
     fileRequested.close();
     ui->plainTextEdit->appendPlainText((header));
     writeLogFile();
-
-    /*else{
-        header = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n";
-        QString body = "<html><body><h1>404 Not Found</h1></body></html>";
-        response.append(header.toUtf8());
-        response.append(body.toUtf8());
-    }*/
 }
 
 void MainWindow::onClientReqstPOST()
