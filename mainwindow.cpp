@@ -195,6 +195,8 @@ void MainWindow::onClientReqstGET(QString route,  QTcpSocket* client)
     }
     else if(fileDir.endsWith(".css", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n";
+    }else if(fileDir.endsWith(".js", Qt::CaseInsensitive)){
+        header = "HTTP/1.1 200 OK\r\nContent-Type: text/javascript\r\n";
     }
     else{
         header = "HTTP/1.1 415 Unsupported Media Type\r\n\r\n";
