@@ -2,7 +2,7 @@
 
 RaceTrack::RaceTrack(QString &pathMapDir, QString &backgroundDir){
     loadTrackFromImage(pathMapDir);
-
+    setBackgroundImage(backgroundDir);
 }
 
 bool RaceTrack::isOnTrack(int x, int y)
@@ -25,7 +25,7 @@ void RaceTrack::loadTrackFromImage(QString &pathMapDir) {
         for (int x = 0; x < image.width(); ++x) {
             color = image.pixelColor(x, y);
             if (color == Qt::black) {
-                pathPixels.insert(QPoint(x, y));
+                trackPixels.insert(QPoint(x, y));
             }
         }
     }
@@ -33,5 +33,17 @@ void RaceTrack::loadTrackFromImage(QString &pathMapDir) {
 
 void RaceTrack::setBackgroundImage(QString &backgroundDir)
 {
+    QFile backgroundFile;
 
+    backgroundFile.setFileName(backgroundDir);
+    backgroundFile.open(QFile::ReadOnly);
+
+    backgroundImage.append(backgroundFile.readAll());
+
+    backgroundFile.close();
+}
+
+QByteArray RaceTrack::getBackgroundImage()
+{
+    return backgroundImage;
 }

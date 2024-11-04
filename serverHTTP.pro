@@ -11,9 +11,11 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    racetrack.cpp \
 
 HEADERS += \
     mainwindow.h \
+    racetrack.h \
 
 FORMS += \
     mainwindow.ui

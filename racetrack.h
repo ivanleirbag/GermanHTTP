@@ -4,8 +4,9 @@
 #include "QString"
 #include <QImage>
 #include <QColor>
-#include <vector>
 #include "QFile"
+#include <QSet>
+#include <QPoint>
 
 class RaceTrack {
 public:
@@ -26,9 +27,16 @@ public:
      */
     bool isOnTrack(int x, int y);
 
+    /**
+     * @brief getBackgroundImage
+     * Returns a QByteArray cointaining the background image of the race track
+     */
+    QByteArray getBackgroundImage();
+
 private:
     QString backgroundDir;
-    QSet<QPoint> pathPixels;
+    QSet<QPoint> trackPixels;
+    QByteArray backgroundImage;
 
     void loadTrackFromImage(QString& imagePath);
     void setBackgroundImage(QString& backgroundDir);

@@ -159,18 +159,30 @@ void MainWindow::onClientRequest()
     client->disconnectFromHost();
 }
 
-void MainWindow::onClientReqstGET(QString route,  QTcpSocket* client)
+void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
 {
     QFile fileRequested;
     QString fileDir = workingDir + "/htdocs";
     QString header;
     QByteArray response;
 
-    if(route == "/"){
+    if(uri == "/"){
         fileDir = fileDir + "/index.html";
     }
+    //RACE GAME DEBUG
+    else if(uri == "/race4"){
+        QString raceDir = workingDir + "/racedocs";
+        QString imageDir = raceDir + "background.png";
+        QString pathDir = raceDir + "raceTrack.png";
+        RaceTrack track(pathDir, imageDir);
+
+        client->write("HTTP/1.1 200 OK\r\nContent-Type: image/png\r\n\r\n");
+        client->write(track.getBackgroundImage());
+        client->flush();
+        return;
+    }
     else{
-        fileDir = fileDir + route;
+        fileDir = fileDir + uri;
     }
 
     fileRequested.setFileName(fileDir);
