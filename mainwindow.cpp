@@ -172,11 +172,11 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
     //RACE GAME DEBUG
     else if(uri == "/race4"){
         QString raceDir = workingDir + "/racedocs";
-        QString imageDir = raceDir + "background.png";
-        QString pathDir = raceDir + "raceTrack.png";
+        QString imageDir = raceDir + "/background.jpg";
+        QString pathDir = raceDir + "/raceTrack.jpg";
         RaceTrack track(pathDir, imageDir);
 
-        client->write("HTTP/1.1 200 OK\r\nContent-Type: image/png\r\n\r\n");
+        client->write("HTTP/1.1 200 OK\r\nContent-Type: image/jpg\r\n\r\n");
         client->write(track.getBackgroundImage());
         client->flush();
         return;
