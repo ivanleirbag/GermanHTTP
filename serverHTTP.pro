@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     car.cpp \
+    hitbox.cpp \
     main.cpp \
     mainwindow.cpp \
     racetrack.cpp \
 
 HEADERS += \
     car.h \
+    hitbox.h \
     mainwindow.h \
     racetrack.h \
 

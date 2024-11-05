@@ -209,6 +209,10 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
         header = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n";
     }else if(fileDir.endsWith(".js", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: text/javascript\r\n";
+    }else if(fileDir.endsWith(".json", Qt::CaseInsensitive)){
+        header = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n";
+    }else if(fileDir.endsWith(".mp3", Qt::CaseInsensitive)){
+        header = "HTTP/1.1 200 OK\r\nContent-Type: audio/mpeg3\r\n";
     }
     else{
         header = "HTTP/1.1 415 Unsupported Media Type\r\n\r\n";

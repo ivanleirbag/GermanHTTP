@@ -1,12 +1,14 @@
 #include "car.h"
 
 
-Car::Car(QString& carImgDir, int carID, int initX, int initY)
+Car::Car(QString& carImgDir, int carID, int initX, int initY, int width, int height)
+    : hitbox(width, height)
 {
     setImage(carImgDir);
     ID = carID;
     position.setX(initX);
     position.setY(initY);
+    hitbox.updatePosition(position);
 }
 
 void Car::setImage(QString &carImgDir)
@@ -27,7 +29,16 @@ QByteArray Car::getImage()
     return image;
 }
 
-void Car::updateCorners()
+void Car::updateCarPosition(int newX, int newY)
 {
-    corners
+    position.setX(newX);
+    position.setY(newY);
+    hitbox.updatePosition(position);
 }
+
+bool Car::collidesWith(Car &otherCar)
+{
+    return hitbox.collidesWith(otherCar.hitbox);
+}
+
+

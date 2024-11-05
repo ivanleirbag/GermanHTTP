@@ -13,7 +13,8 @@ public:
     /**
      * @brief RaceTrack
      * Race track class constructor
-     * @param imagePath
+     * @param pathMapDir
+     * @param backgroundDIr
      */
     RaceTrack(QString& pathMapDir, QString& backgrounDir);
 

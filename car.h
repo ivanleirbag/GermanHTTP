@@ -5,15 +5,15 @@
 #include <QImage>
 #include <QColor>
 #include "QFile"
-#include <vector>
 #include <QPoint>
+#include "hitbox.h"
 
 class Car
 {
 public:
     //Public Vars
     QPoint position;
-    std::vector<QPoint>corners;
+    Hitbox hitbox;
 
     //Public Funcs
     /**
@@ -27,7 +27,7 @@ public:
      * @param initX
      * @param initY
      */
-    Car(QString& carImgDir, int carID, int initX, int initY);
+    Car(QString& carImgDir, int carID, int initX, int initY, int width, int height);
 
     /**
      * @brief getImage
@@ -37,8 +37,7 @@ public:
      */
     QByteArray getImage();
 
-    void updateCorners();
-
+    bool collidesWith(Car &otherCar);
 private:
     //Private Variables
     QByteArray image;

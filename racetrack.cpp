@@ -38,6 +38,7 @@ void RaceTrack::setBackgroundImage(QString &backgroundDir)
     backgroundFile.setFileName(backgroundDir);
     backgroundFile.open(QFile::ReadOnly);
 
+    backgroundImage.clear();
     backgroundImage.append(backgroundFile.readAll());
 
     backgroundFile.close();
