@@ -279,9 +279,18 @@ void MainWindow::onClientReqstPOST(QString uri,  QTcpSocket* client, const QByte
     fileRequested.write(dataSent);
     fileRequested.close();
 
-    header = "HTTP/1.1 200 OK\r\n";
+    if (resourcePath.endsWith(".json", Qt::CaseInsensitive)) {
+        header += "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n";
+    }
+    else{
+        header = "HTTP/1.1 415 Unsupported Media Type\r\n\r\n";
+        client->write(header.toUtf8());
+        client->flush();
+        ui->plainTextEdit->appendPlainText((header));
+        writeLogFile();
+        return;
+    }
     header += "Access-Control-Allow-Origin: *\r\n";
-    header += "Content-Type: application/json\r\n";
     header += "Connection: keep-alive\r\n\r\n";
 
     client->write(header.toUtf8());
