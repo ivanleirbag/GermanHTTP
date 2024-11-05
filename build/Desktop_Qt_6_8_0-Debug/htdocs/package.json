@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "pug": "^3.0.3",
+    "sass": "^1.80.6"
+  },
+  "scripts": {
+    "build:pug": "pug src/views -o html",
+    "build:sass": "sass src/scss/styles.scss css/style.css",
+    "build": "npm run build:pug && npm run build:sass",
+    "watch:sass": "sass --watch src/scss/styles.scss css/style.css"
+  },
+  "dependencies": {
+    "tilt.js": "^1.2.1"
+  }
+}

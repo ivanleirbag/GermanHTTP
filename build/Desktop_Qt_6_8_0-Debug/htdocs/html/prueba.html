@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar JSON con POST</title>
+</head>
+<body>
+    <h2>Enviar JSON al Servidor</h2>
+
+    <button onclick="enviarJson()">Enviar JSON</button>
+
+    <script>
+        function enviarJson() {
+            // Datos de ejemplo en formato JSON
+            const data = {
+                "nombre": "Juan",
+                "edad": 30,
+                "ocupacion": "Desarrollador"
+            };
+
+            // Configurar la solicitud
+            fetch("http://localhost:8080/example.json", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error("Error en la solicitud");
+                }
+            })
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+                alert("JSON enviado con éxito");
+            })
+            .catch(error => {
+                console.error("Hubo un problema con la solicitud:", error);
+            });
+        }
+    </script>
+</body>
+</html>

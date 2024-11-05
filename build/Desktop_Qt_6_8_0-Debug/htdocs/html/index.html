@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CRID - Arcade </title>
+
+    <!-- =============================
+     ---------Seccion Links---------
+     ============================= -->
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/wickedcss.min.css">
+    <link rel="shortcut icon" href="../img/ArcadeLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    
+    <div class="navbar">
+
+        <ul class="favorites">
+            <div class="logo">
+                <img src="../img/ArcadeLogo.png" class="wiggle" alt="" srcset="">
+            </div>
+        </ul>
+
+    </div>
+
+    <div class="newGamesBanner">
+        <h2>Nuevos</h2>
+    </div>
+
+
+    <div class="titleGames">
+
+        <p class="textGametitle1"> M I N I</p>
+        <p class="textGametitle2"> G A M E S</p>
+
+        <div class="titleGamesSub">
+            <p class="textGametitle14"> M I N I</p>
+            <p class="textGametitle15"> G A M E S</p>
+        </div>
+    </div>
+
+
+    <div class="cajaGames">
+        <a class="inCajaGames" href="race.html">
+            <img  src="../img/auto.png" class="zoomer" alt="" srcset="">
+            <h2 class="textGames">R A C E</h2>
+        </a>
+        <a class="inCajaGames" href="../html/snake/snake.html">
+            <img class="rotateInLeft" src="../img/serpiente.png" alt="" srcset="">
+            <h2 class="textGames">S N A K E</h2>
+        </a>
+    </div>
+
+
+<script src="../js/script.js"></script>
+<script type="text/javascript" src="../js/vanilla-tilt.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+<script>
+	VanillaTilt.init(document.querySelectorAll(".inCajaGames, .textGames, .imgGames")
+    ,{
+        max: 25,
+    speed: 400,
+    scale: 1.1,
+
+});
+</script>
+</body>
+</html>
