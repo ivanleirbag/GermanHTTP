@@ -37,6 +37,8 @@ public:
      */
     QByteArray getImage();
 
+    void updateCarPosition(int newX, int newY);
+
     bool collidesWith(Car &otherCar);
 private:
     //Private Variables

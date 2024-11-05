@@ -1,6 +1,6 @@
 Oppenning port 8080...
 Successfully oppened port 8080.
-CONNECTING: ::ffff:192.168.1.4: 50364
+CONNECTING: ::ffff:192.168.1.4: 36546
 GET / HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -18,10 +18,12 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 50364
-CONNECTING: ::ffff:192.168.1.4: 50372
-CONNECTING: ::ffff:192.168.1.4: 50376
-GET /styles.css HTTP/1.1
+DISCONNECTING: ::ffff:192.168.1.4: 36546
+CONNECTING: ::ffff:192.168.1.4: 36560
+CONNECTING: ::ffff:192.168.1.4: 36574
+CONNECTING: ::ffff:192.168.1.4: 36590
+CONNECTING: ::ffff:192.168.1.4: 36604
+GET /css/style.css HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: text/css,*/*;q=0.1
@@ -38,8 +40,26 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 50372
-GET /script.js HTTP/1.1
+DISCONNECTING: ::ffff:192.168.1.4: 36560
+GET /css/wickedcss.min.css HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36574
+GET /js/script.js HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: */*
@@ -55,14 +75,28 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 50376
-CONNECTING: ::ffff:192.168.1.4: 50380
-CONNECTING: ::ffff:192.168.1.4: 50390
-CONNECTING: ::ffff:192.168.1.4: 50396
-CONNECTING: ::ffff:192.168.1.4: 50408
-CONNECTING: ::ffff:192.168.1.4: 50420
-CONNECTING: ::ffff:192.168.1.4: 50426
-GET /assets/pausasnake.png HTTP/1.1
+DISCONNECTING: ::ffff:192.168.1.4: 36590
+GET /js/vanilla-tilt.js HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+
+
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36604
+CONNECTING: ::ffff:192.168.1.4: 36606
+CONNECTING: ::ffff:192.168.1.4: 36618
+CONNECTING: ::ffff:192.168.1.4: 36632
+GET /img/ArcadeLogo.png HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -79,8 +113,8 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 50380
-GET /assets/gameover.png HTTP/1.1
+DISCONNECTING: ::ffff:192.168.1.4: 36606
+GET /img/auto.png HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -97,8 +131,8 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 50390
-GET /assets/calavera.png HTTP/1.1
+DISCONNECTING: ::ffff:192.168.1.4: 36618
+GET /img/serpiente.png HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -115,63 +149,6 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 50396
-GET /assets/intromusic.mp3 HTTP/1.1
-Host: 192.168.1.4:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Range: bytes=0-
-Connection: keep-alive
-Referer: http://192.168.1.4:8080/
-Accept-Encoding: identity
-Priority: u=4
-
-
-HTTP/1.1 200 OK
-Content-Type: audio/mpeg3
-Transfer-Encoding: chunked
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:192.168.1.4: 50408
-GET /assets/gameovermusic.mp3 HTTP/1.1
-Host: 192.168.1.4:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Range: bytes=0-
-Connection: keep-alive
-Referer: http://192.168.1.4:8080/
-Accept-Encoding: identity
-Priority: u=4
-
-
-HTTP/1.1 200 OK
-Content-Type: audio/mpeg3
-Transfer-Encoding: chunked
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:192.168.1.4: 50420
-GET /assets/ingamesong.mp3 HTTP/1.1
-Host: 192.168.1.4:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Range: bytes=0-
-Connection: keep-alive
-Referer: http://192.168.1.4:8080/
-Accept-Encoding: identity
-Priority: u=4
-
-
-HTTP/1.1 200 OK
-Content-Type: audio/mpeg3
-Transfer-Encoding: chunked
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:192.168.1.4: 50426
+DISCONNECTING: ::ffff:192.168.1.4: 36632
 Closing port 8080...
 Successfully closed port 8080.

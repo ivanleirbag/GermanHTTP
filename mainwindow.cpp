@@ -167,7 +167,7 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
     QByteArray response;
 
     if(uri == "/"){
-        fileDir = fileDir + "/index.html";
+        fileDir = fileDir + "/html/index.html";
     }
     //RACE GAME DEBUG
     else if(uri == "/race4"){

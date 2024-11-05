@@ -7,6 +7,7 @@
 #include "QFile"
 #include <QSet>
 #include <QPoint>
+#include "car.h"
 
 class RaceTrack {
 public:
@@ -21,12 +22,16 @@ public:
     /**
      * @brief isOnTrack
      * Checks if the coordinates given are inside of the track path
+     * This function is overloaded
      * @param x
      * @param y
      * @return
      * True if it's on track, False if it's not
      */
     bool isOnTrack(int x, int y);
+
+
+    bool isOnTrack(Car& car);
 
     /**
      * @brief getBackgroundImage
