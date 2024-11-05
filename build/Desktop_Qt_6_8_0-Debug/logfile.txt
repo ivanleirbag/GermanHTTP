@@ -1,6 +1,26 @@
 Oppenning port 8080...
 Successfully oppened port 8080.
-CONNECTING: ::ffff:192.168.1.4: 36546
+CONNECTING: ::ffff:192.168.1.4: 48824
+GET /race.html HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.1.4:8080/
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 48824
+CONNECTING: ::ffff:192.168.1.4: 48836
+DISCONNECTING: ::ffff:192.168.1.4: 48836
+CONNECTING: ::ffff:192.168.1.4: 48842
 GET / HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -18,11 +38,8 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36546
-CONNECTING: ::ffff:192.168.1.4: 36560
-CONNECTING: ::ffff:192.168.1.4: 36574
-CONNECTING: ::ffff:192.168.1.4: 36590
-CONNECTING: ::ffff:192.168.1.4: 36604
+DISCONNECTING: ::ffff:192.168.1.4: 48842
+CONNECTING: ::ffff:192.168.1.4: 48846
 GET /css/style.css HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -40,7 +57,10 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36560
+DISCONNECTING: ::ffff:192.168.1.4: 48846
+CONNECTING: ::ffff:192.168.1.4: 48856
+CONNECTING: ::ffff:192.168.1.4: 48864
+CONNECTING: ::ffff:192.168.1.4: 48868
 GET /css/wickedcss.min.css HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -58,7 +78,7 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36574
+DISCONNECTING: ::ffff:192.168.1.4: 48856
 GET /js/script.js HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -75,7 +95,7 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36590
+DISCONNECTING: ::ffff:192.168.1.4: 48864
 GET /js/vanilla-tilt.js HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -92,28 +112,10 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36604
-CONNECTING: ::ffff:192.168.1.4: 36606
-CONNECTING: ::ffff:192.168.1.4: 36618
-CONNECTING: ::ffff:192.168.1.4: 36632
-GET /img/ArcadeLogo.png HTTP/1.1
-Host: 192.168.1.4:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Referer: http://192.168.1.4:8080/
-Priority: u=5
-
-
-HTTP/1.1 200 OK
-Content-Type: image/png
-Transfer-Encoding: chunked
-Connection: keep-alive
-
-
-DISCONNECTING: ::ffff:192.168.1.4: 36606
+DISCONNECTING: ::ffff:192.168.1.4: 48868
+CONNECTING: ::ffff:192.168.1.4: 48884
+CONNECTING: ::ffff:192.168.1.4: 48888
+CONNECTING: ::ffff:192.168.1.4: 48894
 GET /img/auto.png HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -131,7 +133,7 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36618
+DISCONNECTING: ::ffff:192.168.1.4: 48884
 GET /img/serpiente.png HTTP/1.1
 Host: 192.168.1.4:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -149,6 +151,726 @@ Transfer-Encoding: chunked
 Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.4: 36632
-Closing port 8080...
-Successfully closed port 8080.
+DISCONNECTING: ::ffff:192.168.1.4: 48888
+GET /img/ArcadeLogo.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 48894
+CONNECTING: ::ffff:192.168.1.4: 50826
+GET /snake/snake.html HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 50826
+CONNECTING: ::ffff:192.168.1.4: 38056
+GET /snake/snake.html HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 38056
+CONNECTING: ::ffff:192.168.1.4: 36004
+GET / HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36004
+CONNECTING: ::ffff:192.168.1.4: 36018
+CONNECTING: ::ffff:192.168.1.4: 36028
+CONNECTING: ::ffff:192.168.1.4: 36044
+GET /css/style.css HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36018
+GET /css/wickedcss.min.css HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36028
+GET /js/script.js HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+
+
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36044
+CONNECTING: ::ffff:192.168.1.4: 36058
+GET /js/vanilla-tilt.js HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+
+
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36058
+CONNECTING: ::ffff:192.168.1.4: 36072
+CONNECTING: ::ffff:192.168.1.4: 36074
+CONNECTING: ::ffff:192.168.1.4: 36086
+GET /img/ArcadeLogo.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36072
+GET /img/auto.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36074
+GET /img/serpiente.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36086
+CONNECTING: ::ffff:192.168.1.4: 36090
+GET /html/snake/snake.html HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36090
+CONNECTING: ::ffff:192.168.1.4: 36098
+CONNECTING: ::ffff:192.168.1.4: 36106
+GET /html/snake/styles.css HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36098
+GET /html/snake/script.js HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+
+
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36106
+CONNECTING: ::ffff:192.168.1.4: 36110
+CONNECTING: ::ffff:192.168.1.4: 36126
+CONNECTING: ::ffff:192.168.1.4: 36138
+CONNECTING: ::ffff:192.168.1.4: 36146
+CONNECTING: ::ffff:192.168.1.4: 36158
+CONNECTING: ::ffff:192.168.1.4: 36166
+GET /html/snake/assets/pausasnake.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36110
+GET /html/snake/assets/gameover.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36126
+GET /html/snake/assets/calavera.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36138
+GET /html/snake/assets/intromusic.mp3 HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Range: bytes=0-
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Accept-Encoding: identity
+Priority: u=4
+
+
+HTTP/1.1 200 OK
+Content-Type: audio/mpeg3
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36146
+GET /html/snake/assets/gameovermusic.mp3 HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Range: bytes=0-
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Accept-Encoding: identity
+Priority: u=4
+
+
+HTTP/1.1 200 OK
+Content-Type: audio/mpeg3
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36158
+GET /html/snake/assets/ingamesong.mp3 HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Range: bytes=0-
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Accept-Encoding: identity
+Priority: u=4
+
+
+HTTP/1.1 200 OK
+Content-Type: audio/mpeg3
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36166
+CONNECTING: ::ffff:192.168.1.4: 36172
+GET /html/snake/assets/faviconsnake.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=6
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 36172
+CONNECTING: ::ffff:192.168.1.4: 43984
+GET /html/snake/snake.html HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 43984
+CONNECTING: ::ffff:192.168.1.4: 43992
+CONNECTING: ::ffff:192.168.1.4: 44004
+GET /html/snake/styles.css HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 43992
+GET /html/snake/script.js HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+
+
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44004
+CONNECTING: ::ffff:192.168.1.4: 44018
+CONNECTING: ::ffff:192.168.1.4: 44030
+GET /html/snake/assets/pausasnake.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44018
+GET /html/snake/assets/gameover.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44030
+CONNECTING: ::ffff:192.168.1.4: 44036
+GET /html/snake/assets/calavera.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44036
+CONNECTING: ::ffff:192.168.1.4: 44356
+GET /html/snake/snake.html HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44356
+CONNECTING: ::ffff:192.168.1.4: 44366
+CONNECTING: ::ffff:192.168.1.4: 44376
+GET /html/snake/styles.css HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=2
+
+
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44366
+GET /html/snake/script.js HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+
+
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44376
+CONNECTING: ::ffff:192.168.1.4: 44382
+CONNECTING: ::ffff:192.168.1.4: 44390
+GET /html/snake/assets/pausasnake.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44382
+GET /html/snake/assets/gameover.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44390
+CONNECTING: ::ffff:192.168.1.4: 44402
+CONNECTING: ::ffff:192.168.1.4: 44408
+CONNECTING: ::ffff:192.168.1.4: 44414
+CONNECTING: ::ffff:192.168.1.4: 44424
+GET /html/snake/assets/calavera.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=5
+
+
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44402
+GET /html/snake/assets/intromusic.mp3 HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Range: bytes=0-
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Accept-Encoding: identity
+Priority: u=4
+
+
+HTTP/1.1 200 OK
+Content-Type: audio/mpeg3
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44408
+GET /html/snake/assets/gameovermusic.mp3 HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Range: bytes=0-
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Accept-Encoding: identity
+Priority: u=4
+
+
+HTTP/1.1 200 OK
+Content-Type: audio/mpeg3
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44414
+GET /html/snake/assets/ingamesong.mp3 HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: audio/webm,audio/ogg,audio/wav,audio/*;q=0.9,application/ogg;q=0.7,video/*;q=0.6,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Range: bytes=0-
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Accept-Encoding: identity
+Priority: u=4
+
+
+HTTP/1.1 200 OK
+Content-Type: audio/mpeg3
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44424
+CONNECTING: ::ffff:192.168.1.4: 44432
+GET /html/snake/assets/faviconsnake.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/html/snake/snake.html
+Priority: u=6
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 44432
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+CONNECTING: ::ffff:192.168.1.4: 40458
+GET /img/ArcadeLogo.png HTTP/1.1
+Host: 192.168.1.4:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://192.168.1.4:8080/
+Priority: u=6
+
+
+DISCONNECTING: ::ffff:192.168.1.4: 40458
+HTTP/1.1 200 OK
+Content-Type: image/png
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
