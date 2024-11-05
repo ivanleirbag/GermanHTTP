@@ -11,6 +11,8 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QRegularExpression>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 
 #include <QtNetwork/QTcpServer>
@@ -47,9 +49,9 @@ private slots:
     void on_OpenPortBttn_clicked();
 
     void onClientReqstGET(QString route, QTcpSocket *client);
-    void onClientReqstPOST();
-    void onClientReqstPUT();
-    void onClientReqstDELETE();
+    void onClientReqstPOST(QString uri,  QTcpSocket* client, const QByteArray &dataSent);
+    void onClientReqstPUT(QString uri,  QTcpSocket* client, QByteArray &dataSent);
+    void onClientReqstOPTIONS(QTcpSocket* client);
 
 private:
     Ui::MainWindow *ui;

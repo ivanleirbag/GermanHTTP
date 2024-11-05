@@ -147,13 +147,22 @@ void MainWindow::onClientRequest()
     ui->plainTextEdit->appendPlainText(strDataSent);
 
     //REQUEST EXTRACTION
+    int headerIndex = dataSent.indexOf("\r\n\r\n");
     requestLines = strDataSent.split("\r\n")[0];
+    ui->plainTextEdit->appendPlainText(dataSent.left(headerIndex));
 
     //METHOD PROCESSING
     reqstLinesTokens = requestLines.split(" ");
 
     if(reqstLinesTokens[0] == "GET"){
         onClientReqstGET(reqstLinesTokens[1], client);
+        client->waitForBytesWritten();
+    }else if(reqstLinesTokens[0] == "POST"){
+        onClientReqstPOST(reqstLinesTokens[1], client, dataSent.mid(headerIndex+4));
+        client->waitForBytesWritten();
+    }
+    else if(reqstLinesTokens[0] == "OPTIONS"){
+        onClientReqstOPTIONS(client);
         client->waitForBytesWritten();
     }
     client->disconnectFromHost();
@@ -162,12 +171,12 @@ void MainWindow::onClientRequest()
 void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
 {
     QFile fileRequested;
-    QString fileDir = workingDir + "/htdocs";
+    QString resourcePath = workingDir + "/htdocs";
     QString header;
     QByteArray response;
 
     if(uri == "/"){
-        fileDir = fileDir + "/html/index.html";
+        resourcePath = resourcePath + "/html/index.html";
     }
     //RACE GAME DEBUG
     else if(uri == "/race4"){
@@ -182,10 +191,10 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
         return;
     }
     else{
-        fileDir = fileDir + uri;
+        resourcePath = resourcePath + uri;
     }
 
-    fileRequested.setFileName(fileDir);
+    fileRequested.setFileName(resourcePath);
 
     if (!fileRequested.open(QFile::ReadOnly)) {
         header = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n";
@@ -196,22 +205,22 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
         return;
     }
 
-    if (fileDir.endsWith(".png", Qt::CaseInsensitive)) {
+    if (resourcePath.endsWith(".png", Qt::CaseInsensitive)) {
         header = "HTTP/1.1 200 OK\r\nContent-Type: image/png\r\n";
     }
-    else if (fileDir.endsWith(".html", Qt::CaseInsensitive)) {
+    else if (resourcePath.endsWith(".html", Qt::CaseInsensitive)) {
         header = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n";
     }
-    else if(fileDir.endsWith(".jpg", Qt::CaseInsensitive) || fileDir.endsWith(".jpeg", Qt::CaseInsensitive)){
+    else if(resourcePath.endsWith(".jpg", Qt::CaseInsensitive) || resourcePath.endsWith(".jpeg", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\n";
     }
-    else if(fileDir.endsWith(".css", Qt::CaseInsensitive)){
+    else if(resourcePath.endsWith(".css", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: text/css\r\n";
-    }else if(fileDir.endsWith(".js", Qt::CaseInsensitive)){
+    }else if(resourcePath.endsWith(".js", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: text/javascript\r\n";
-    }else if(fileDir.endsWith(".json", Qt::CaseInsensitive)){
+    }else if(resourcePath.endsWith(".json", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n";
-    }else if(fileDir.endsWith(".mp3", Qt::CaseInsensitive)){
+    }else if(resourcePath.endsWith(".mp3", Qt::CaseInsensitive)){
         header = "HTTP/1.1 200 OK\r\nContent-Type: audio/mpeg3\r\n";
     }
     else{
@@ -249,18 +258,53 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
     writeLogFile();
 }
 
-void MainWindow::onClientReqstPOST()
+void MainWindow::onClientReqstPOST(QString uri,  QTcpSocket* client, const QByteArray &dataSent)
 {
+    QFile fileRequested;
+    QString resourcePath = workingDir + "/htdocs" + uri;
+    QString header;
 
+    //CREATES THE RESOURCE IF IT DOES NOT EXISTS
+    fileRequested.setFileName(resourcePath);
+    if (!fileRequested.open(QFile::WriteOnly | QFile::Append)) {
+        header = "HTTP/1.1 500 Internal Server Error\r\nContent-Type: text/plain\r\n\r\nCould not create the resource";
+        client->write(header.toUtf8());
+        client->flush();
+        ui->plainTextEdit->appendPlainText(header);
+        writeLogFile();
+        return;
+    }
+
+    //WRITES THE RESOURCE
+    fileRequested.write(dataSent);
+    fileRequested.close();
+
+    header = "HTTP/1.1 200 OK\r\n";
+    header += "Access-Control-Allow-Origin: *\r\n";
+    header += "Content-Type: application/json\r\n";
+    header += "Connection: keep-alive\r\n\r\n";
+
+    client->write(header.toUtf8());
+    client->flush();
+
+    ui->plainTextEdit->appendPlainText(header);
+    writeLogFile();
 }
 
-void MainWindow::onClientReqstPUT()
+void MainWindow::onClientReqstPUT(QString uri,  QTcpSocket* client, QByteArray &dataSent)
 {
-
+    return;
 }
 
-void MainWindow::onClientReqstDELETE()
+void MainWindow::onClientReqstOPTIONS(QTcpSocket *client)
 {
-
+    QString header = "HTTP/1.1 204 No Content\r\n";
+    header += "Access-Control-Allow-Origin: *\r\n";
+    header += "Access-Control-Allow-Methods: POST, GET, OPTIONS\r\n";
+    header += "Access-Control-Allow-Headers: Content-Type\r\n";
+    header += "Connection: keep-alive\r\n\r\n";
+    client->write(header.toUtf8());
+    client->flush();
+    client->disconnectFromHost();
 }
 
