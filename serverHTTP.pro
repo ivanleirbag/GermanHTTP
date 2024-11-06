@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     car.cpp \
+    glm.cpp \
     hitbox.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
 
 HEADERS += \
     car.h \
+    glm.h \
     hitbox.h \
     mainwindow.h \
     racetrack.h \

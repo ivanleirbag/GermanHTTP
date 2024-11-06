@@ -5,7 +5,6 @@
 
 #include <QFile>
 #include <QMainWindow>
-#include <QDateTime>
 #include <QCoreApplication>
 #include <QFile>
 #include <QTextStream>
