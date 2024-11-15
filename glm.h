@@ -3,29 +3,28 @@
 
 #include "car.h"
 #include "racetrack.h"
-#include "hitbox.h"
-
-#include <QFile>
-#include <QtNetwork/QTcpServer>
-#include <QtNetwork/QTcpSocket>
-#include <QtNetwork/QHostAddress>
+#include <QVector>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QJsonDocument>
 
-//Game Logic Module
-
-class GLM
-{
+class GLM {
 public:
-    GLM();
+    GLM(RaceTrack &track);
 
-    int initRaceTracks();
+    QString addCar(Car &car);
 
-    int addNewPlayer(QTcpSocket *client);
+    void updateGameState(const QJsonArray &clientInputs);
 
-    int disconnectPlayer(QHostAddress playerIP);
+    void handleCollisions();
 
-    validateMovement
+    QJsonObject getGameStateJson();
+
+private:
+    QVector<Car> cars;
+    RaceTrack &raceTrack;
+
+    void updateCarState(Car &car, const QJsonObject &json, RaceTrack &track);
 };
 
 #endif // GLM_H

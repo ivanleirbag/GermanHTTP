@@ -8,6 +8,7 @@
 #include <QSet>
 #include <QPoint>
 #include "car.h"
+#include <QtMath>
 
 class RaceTrack {
 public:

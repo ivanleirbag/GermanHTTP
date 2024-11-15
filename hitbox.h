@@ -2,14 +2,15 @@
 #define HITBOX_H
 
 #include <QPoint>
+#include <QtMath>
 
 class Hitbox {
 public:
     //Public Vars
-    QPoint topLeft, bottomRight;
-    int width, height;
+    QPoint center;
+    int radius;
 
-    Hitbox(int width, int height);
+    Hitbox(int radius);
 
     void updatePosition(QPoint& newPos);
 

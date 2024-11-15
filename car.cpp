@@ -1,14 +1,17 @@
 #include "car.h"
 
 
-Car::Car(QString& carImgDir, int carID, int initX, int initY, int width, int height)
-    : hitbox(width, height)
+Car::Car(QString& carImgDir, int carID, int initX, int initY, int radius, float sDirection)
+    : hitbox(radius)
 {
     setImage(carImgDir);
     ID = carID;
     position.setX(initX);
     position.setY(initY);
     hitbox.updatePosition(position);
+    speed = 0;
+    direction = sDirection;
+
 }
 
 void Car::setImage(QString &carImgDir)
@@ -29,16 +32,51 @@ QByteArray Car::getImage()
     return image;
 }
 
-void Car::updateCarPosition(int newX, int newY)
+void Car::savePreviousState()
 {
-    position.setX(newX);
-    position.setY(newY);
+    prevPosX = posX;
+    prevPosY = posY;
+    prevSpeed = speed;
+    prevDirection = direction;
+}
+
+void Car::restorePreviousState()
+{
+    posX = prevPosX;
+    posY = prevPosY;
+    speed = prevSpeed;
+    direction = prevDirection;
+    position.setX(posX);
+    position.setY(posY);
     hitbox.updatePosition(position);
+}
+
+void Car::updateCarState(const QJsonObject &json)
+{
+    savePreviousState();
+
+    position.setX(json["posX"].toInt());
+    position.setY(json["posY"].toInt());
+    hitbox.updatePosition(position);
+
+    speed = json["speed"].toInt();
+    direction = json["direction"].toDouble();
 }
 
 bool Car::collidesWith(Car &otherCar)
 {
     return hitbox.collidesWith(otherCar.hitbox);
+}
+
+QJsonObject Car::carStateJson()
+{
+    QJsonObject json;
+    json["id"] = ID;
+    json["posX"] = position.x();
+    json["posY"] = position.y();
+    json["speed"] = speed;
+    json["direction"] = direction;
+    return json;
 }
 
 

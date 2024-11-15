@@ -12,11 +12,25 @@ bool RaceTrack::isOnTrack(int x, int y)
 
 bool RaceTrack::isOnTrack(Car &car)
 {
-    return isOnTrack(car.hitbox.topLeft.x(), car.hitbox.topLeft.y()) &&
-           isOnTrack(car.hitbox.bottomRight.x(), car.hitbox.topLeft.y()) &&
-           isOnTrack(car.hitbox.topLeft.x(), car.hitbox.bottomRight.y()) &&
-           isOnTrack(car.hitbox.bottomRight.x(), car.hitbox.bottomRight.y());
+    QPoint center = car.hitbox.center;
+    int radius = car.hitbox.radius;
+
+    const int numSegments = 16;
+    const double angleIncrement = 2 * M_PI / numSegments;
+
+    for (int i = 0; i < numSegments; ++i) {
+        double angle = i * angleIncrement;
+        int checkX = center.x() + static_cast<int>(radius * qCos(angle));
+        int checkY = center.y() + static_cast<int>(radius * qSin(angle));
+
+        if (!isOnTrack(checkX, checkY)) {
+            return false;
+        }
+    }
+
+    return true;
 }
+
 
 
 void RaceTrack::loadTrackFromImage(QString &pathMapDir) {

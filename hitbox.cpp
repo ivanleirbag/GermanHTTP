@@ -1,23 +1,24 @@
 #include "hitbox.h"
 
-Hitbox::Hitbox(int hbWidth, int hbHeight)
+Hitbox::Hitbox(int hbRadius)
 {
-    width = hbWidth;
-    height = hbHeight;
+    radius = hbRadius;
 }
 
 void Hitbox::updatePosition(QPoint &newPos)
 {
-    topLeft = QPoint(newPos.x() - (width / 2), newPos.y() - (height / 2));
-    bottomRight = QPoint(newPos.x() + (width / 2), newPos.y() + (height / 2));
+    center = newPos;
 }
 
 bool Hitbox::collidesWith(Hitbox &other)
 {
-    if((bottomRight.x() >= other.topLeft.x() || topLeft.x() <= other.bottomRight.x()) &&
-        (bottomRight.y() <= other.topLeft.y() || topLeft.y() >= other.bottomRight.y())){
-        return true;
-    }else{
-        return false;
-    }
+    int dx = center.x() - other.center.x();
+    int dy = center.y() - other.center.y();
+    int dist = dx*dx + dy*dy;
+
+    int radSum = radius + other.radius;
+
+    //IF THE RADIUS'S SUM IS LESS THAN THE DISTANCE BETWEEN THEM THEN THERE'S A COLISIOn
+    //EVERYTHING IS SQUARED SO SIGN DOESN'T MATTER
+    return dist <= (radSum*radSum);
 }
