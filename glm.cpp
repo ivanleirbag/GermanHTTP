@@ -5,40 +5,78 @@
 GLM::GLM(RaceTrack &track)
     : raceTrack(track) {}
 
-QString GLM::addCar(Car &car) {
-    QString success;
+void GLM::addCar(Car &car) {
+    //CHECKS FOR CAR DUPLICATES
+    for (const auto &existingCar : cars) {
+        if (existingCar.ID == car.ID) {
+            return;
+        }
+    }
+
     if (cars.size() < 4){
         cars.append(car);
-        success = "New car added successfully";
-        return success;
     }else{
-        success = "Could not add new car. Max player capacity reached.";
-        return success;
+        return;
     }
 }
 
+void GLM::removeCar(const QString &carID)
+{
+    for (int i = 0; i < cars.size(); ++i) {
+        if (cars[i].ID == carID) {
+            cars.removeAt(i);
+            return;
+        }
+    }
+}
+
+void GLM::updateGameState() {
+    for (Car &car : cars) {
+        car.updatePosition();
+
+        if (!raceTrack.isOnTrack(car)) {
+            car.restorePreviousState();
+        }
+
+        for (Car &otherCar : cars) {
+            if (car.ID != otherCar.ID && car.collidesWith(otherCar)) {
+                car.restorePreviousState();
+            }
+        }
+    }
+}
 
 void GLM::updateGameState(const QJsonArray &clientInputs) {
+    QJsonObject carInput;
+    QString carID;
     for (const auto &input : clientInputs) {
-        QJsonObject carInput = input.toObject();
-        int carID = carInput["id"].toInt();
+        carInput = input.toObject();
+        carID = carInput["id"].toString();
 
         for (auto &car : cars) {
             if (carID == car.ID) {
-                updateCarState(car, carInput, raceTrack);
+                updateCarState(car, carInput);
                 break;
             }
         }
     }
-
-    handleCollisions();
 }
 
-void GLM::updateCarState(Car &car, const QJsonObject &json,  RaceTrack &track)
+int GLM::getNextAvailableCar()
+{
+    if (cars.size() < 4){
+        return cars.max_size()+1;
+    }else{
+        return -1;
+    }
+}
+
+
+void GLM::updateCarState(Car &car, const QJsonObject &json)
 {
     car.updateCarState(json);
 
-    if (!track.isOnTrack(car)) {
+    if (!raceTrack.isOnTrack(car)) {
         car.restorePreviousState();
         return;
     }
@@ -52,18 +90,8 @@ void GLM::updateCarState(Car &car, const QJsonObject &json,  RaceTrack &track)
 }
 
 
-void GLM::handleCollisions() {
-    for (int i = 0; i < cars.size(); ++i) {
-        for (int j = i + 1; j < cars.size(); ++j) {
-            if (cars[i].collidesWith(cars[j])) {
-                cars[i].speed = 0;
-                cars[j].speed = 0;
-            }
-        }
-    }
-}
 
-QJsonObject GLM::getGameStateJson() {
+QByteArray GLM::getGameState() {
     QJsonObject gameState;
     QJsonArray carsArray;
 
@@ -72,6 +100,6 @@ QJsonObject GLM::getGameStateJson() {
     }
 
     gameState["cars"] = carsArray;
-    return gameState;
+    return QJsonDocument(gameState).toJson();
 }
 

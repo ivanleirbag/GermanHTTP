@@ -12,19 +12,23 @@ class GLM {
 public:
     GLM(RaceTrack &track);
 
-    QString addCar(Car &car);
+    void addCar(Car &car);
+
+    void removeCar(const QString& carID);
+
+    void updateGameState();
 
     void updateGameState(const QJsonArray &clientInputs);
 
-    void handleCollisions();
+    int getNextAvailableCar();
 
-    QJsonObject getGameStateJson();
+    QByteArray getGameState();
 
 private:
     QVector<Car> cars;
     RaceTrack &raceTrack;
 
-    void updateCarState(Car &car, const QJsonObject &json, RaceTrack &track);
+    void updateCarState(Car &car, const QJsonObject &json);
 };
 
 #endif // GLM_H

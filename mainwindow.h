@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include "racetrack.h"
+#include "car.h"
+#include "hitbox.h"
+#include "glm.h"
+
 
 #include <QFile>
 #include <QMainWindow>
@@ -12,6 +16,7 @@
 #include <QRegularExpression>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QTimer>
 
 
 #include <QtNetwork/QTcpServer>
@@ -47,6 +52,8 @@ private slots:
 
     void on_OpenPortBttn_clicked();
 
+    void updateRace4State();
+
     void onClientReqstGET(QString route, QTcpSocket *client);
     void onClientReqstPOST(QString uri,  QTcpSocket* client, const QByteArray &dataSent);
     void onClientReqstPUT(QString uri,  QTcpSocket* client, QByteArray &dataSent);
@@ -58,6 +65,8 @@ private:
     //SERVER VARS
     QTcpServer *QTcpMainServer;
     QList<QTcpSocket *>clients;
+    GLM *glm;
+    QTimer *gameTimer;
 
     //WORKING DIRECTORY
     QString workingDir = QCoreApplication::applicationDirPath();

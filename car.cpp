@@ -1,11 +1,11 @@
 #include "car.h"
 
 
-Car::Car(QString& carImgDir, int carID, int initX, int initY, int radius, float sDirection)
+Car::Car(QString& carImgDir, QString& clientIP, int initX, int initY, int radius, float sDirection)
     : hitbox(radius)
 {
     setImage(carImgDir);
-    ID = carID;
+    ID = clientIP;
     position.setX(initX);
     position.setY(initY);
     hitbox.updatePosition(position);
@@ -61,6 +61,18 @@ void Car::updateCarState(const QJsonObject &json)
 
     speed = json["speed"].toInt();
     direction = json["direction"].toDouble();
+}
+
+void Car::updatePosition()
+{
+    savePreviousState();
+
+    int xIncrement = speed * qCos(direction);
+    int yIncrement = speed * qSin(direction);
+
+    position.setX((position.x()+xIncrement));
+    position.setY((position.y()+yIncrement));
+    hitbox.updatePosition(position);
 }
 
 bool Car::collidesWith(Car &otherCar)

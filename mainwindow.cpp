@@ -13,11 +13,22 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTcpMainServer = new QTcpServer(this);
     connect(QTcpMainServer, &QTcpServer::newConnection, this, &MainWindow::onNewConnection);
+
+    QString trackPath = workingDir + "/racedocs/assets/tracks/raceTrack.jpg";
+    QString backgroundPath = workingDir + "/racedocs/assets/tracks/background.jpg";
+    RaceTrack track(trackPath, backgroundPath);
+    glm = new GLM(track);
+
+    gameTimer = new QTimer(this);
+    connect(gameTimer, &QTimer::timeout, this, &MainWindow::updateRace4State);
+    gameTimer->start(50);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete glm;
+    delete gameTimer;
 }
 
 void MainWindow::onNewConnection()
@@ -43,8 +54,12 @@ void MainWindow::onClientDisconnect()
 {
     int clientIndex;
     QString clientStr;
+    QString clientIP;
 
     QTcpSocket *client = static_cast<QTcpSocket *>(QObject::sender());
+    clientIP = client->peerAddress().toString();
+
+    glm->removeCar(clientIP);
 
     clientStr = "DISCONNECTING: " + client->peerAddress().toString() + ": ";
     clientStr = clientStr + QString().number(client->peerPort());
@@ -126,6 +141,23 @@ void MainWindow::on_OpenPortBttn_clicked()
     writeLogFile();
 }
 
+void MainWindow::updateRace4State()
+{
+    glm->updateGameState();
+
+    QByteArray gameStateJson = glm->getGameState();
+
+    for(QTcpSocket *client : clients){
+        if(client->isOpen()){
+            client->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n");
+            ui->plainTextEdit->appendPlainText("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n");
+            writeLogFile();
+            client->write(gameStateJson);
+            client->flush();
+        }
+    }
+}
+
 void MainWindow::onClientRequest()
 {
     int count;
@@ -180,15 +212,23 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
     }
     //RACE GAME DEBUG
     else if(uri == "/race4"){
-        QString raceDir = workingDir + "/racedocs";
-        QString imageDir = raceDir + "/background.jpg";
-        QString pathDir = raceDir + "/raceTrack.jpg";
-        RaceTrack track(pathDir, imageDir);
-
-        client->write("HTTP/1.1 200 OK\r\nContent-Type: image/jpg\r\n\r\n");
-        client->write(track.getBackgroundImage());
+        resourcePath = resourcePath + "/racedocs/race4.html";
+    }
+    else if (uri == "/race4/getState") {
+        QString carID = client->peerAddress().toString() + ":" + QString::number(client->peerPort());
+        int carImgID = glm->getNextAvailableCar();
+        if (carImgID > 0){
+            QString carImage = workingDir + "/racedocs/assets/cars/car" + QString::asprintf("%d", carImgID) + ".png";
+            Car car(carImage, carID, 0, 0, 20, 0);
+            glm->addCar(car);
+            QJsonObject response;
+            response["carID"] = carImgID;
+            client->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n");
+            client->write(QJsonDocument(response).toJson());
+        }else{
+            client->write("HTTP/1.1 403 Forbidden\r\nContent-Type: text/plain\r\n\r\nMax player capacity reached.");
+        }
         client->flush();
-        return;
     }
     else{
         resourcePath = resourcePath + uri;
@@ -263,6 +303,26 @@ void MainWindow::onClientReqstPOST(QString uri,  QTcpSocket* client, const QByte
     QFile fileRequested;
     QString resourcePath = workingDir + "/htdocs" + uri;
     QString header;
+
+
+    if (uri == "/race4/update") {
+        QJsonDocument inputDoc = QJsonDocument::fromJson(dataSent);
+        QJsonArray clientInputs = inputDoc.array();
+
+        // Actualizar estado del juego con inputs de los clientes
+        glm->updateGameState(clientInputs);
+
+        // Obtener el estado actualizado del juego
+        QByteArray gameState = glm->getGameState();
+
+        // Enviar respuesta al cliente
+        client->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n");
+        client->write(gameState);
+        client->flush();
+        client->disconnectFromHost();
+
+        return;
+    }
 
     //CREATES THE RESOURCE IF IT DOES NOT EXISTS
     fileRequested.setFileName(resourcePath);

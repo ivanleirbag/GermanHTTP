@@ -1,106 +1,494 @@
 Oppenning port 8080...
 Successfully oppened port 8080.
-CONNECTING: ::ffff:192.168.1.15: 39016
-GET /html/prueba.html HTTP/1.1
-Host: 192.168.1.15:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
-
-
-GET /html/prueba.html HTTP/1.1
-Host: 192.168.1.15:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Connection: keep-alive
-Upgrade-Insecure-Requests: 1
-Priority: u=0, i
+CONNECTING: ::ffff:127.0.0.1: 33418
 HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 33418
+CONNECTING: ::ffff:127.0.0.1: 33426
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+
+GET /race4 HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=0, i
+
+
+GET /race4 HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=0, i
+HTTP/1.1 404 Not Found
 Content-Type: text/html
-Transfer-Encoding: chunked
-Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:192.168.1.15: 39016
-CONNECTING: ::ffff:127.0.0.1: 49820
-OPTIONS /example.json HTTP/1.1
+DISCONNECTING: ::ffff:127.0.0.1: 33426
+CONNECTING: ::ffff:127.0.0.1: 33442
+GET /favicon.ico HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: */*
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
 Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
 Accept-Encoding: gzip, deflate, br, zstd
-Access-Control-Request-Method: POST
-Access-Control-Request-Headers: content-type
-Referer: http://192.168.1.15:8080/
-Origin: http://192.168.1.15:8080
 Connection: keep-alive
-Sec-Fetch-Dest: empty
-Sec-Fetch-Mode: cors
+Referer: http://localhost:8080/race4
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: cross-site
-Priority: u=4
+Priority: u=6
 
 
-OPTIONS /example.json HTTP/1.1
+GET /favicon.ico HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: */*
+Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
 Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
 Accept-Encoding: gzip, deflate, br, zstd
-Access-Control-Request-Method: POST
-Access-Control-Request-Headers: content-type
-Referer: http://192.168.1.15:8080/
-Origin: http://192.168.1.15:8080
 Connection: keep-alive
-Sec-Fetch-Dest: empty
-Sec-Fetch-Mode: cors
+Referer: http://localhost:8080/race4
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
 Sec-Fetch-Site: cross-site
-Priority: u=4
-DISCONNECTING: ::ffff:127.0.0.1: 49820
-CONNECTING: ::ffff:127.0.0.1: 49822
-POST /example.json HTTP/1.1
-Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: */*
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate, br, zstd
-Referer: http://192.168.1.15:8080/
-Content-Type: application/json
-Content-Length: 55
-Origin: http://192.168.1.15:8080
-Connection: keep-alive
-Sec-Fetch-Dest: empty
-Sec-Fetch-Mode: cors
-Sec-Fetch-Site: cross-site
-Priority: u=0
-
-{"nombre":"Juan","edad":30,"ocupacion":"Desarrollador"}
-POST /example.json HTTP/1.1
-Host: localhost:8080
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
-Accept: */*
-Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate, br, zstd
-Referer: http://192.168.1.15:8080/
-Content-Type: application/json
-Content-Length: 55
-Origin: http://192.168.1.15:8080
-Connection: keep-alive
-Sec-Fetch-Dest: empty
-Sec-Fetch-Mode: cors
-Sec-Fetch-Site: cross-site
-Priority: u=0
-HTTP/1.1 200 OK
-Access-Control-Allow-Origin: *
-Content-Type: application/json
-Connection: keep-alive
+Priority: u=6
+HTTP/1.1 404 Not Found
+Content-Type: text/html
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 49822
+DISCONNECTING: ::ffff:127.0.0.1: 33442
 Closing port 8080...
 Successfully closed port 8080.

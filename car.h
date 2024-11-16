@@ -8,12 +8,13 @@
 #include <QPoint>
 #include "hitbox.h"
 #include <QJsonObject>
+#include <QtMath>
 
 class Car
 {
 public:
     //Public Vars
-    int ID;
+    QString ID;
     int posX;
     int posY;
     int speed;
@@ -33,7 +34,7 @@ public:
      * @param initX
      * @param initY
      */
-    Car(QString& carImgDir, int carID, int initX, int initY, int width, int height, float sDirection);
+    Car(QString& carImgDir, QString& clientIP, int initX, int initY, int radius, float sDirection);
 
     /**
      * @brief getImage
@@ -56,6 +57,8 @@ public:
     void restorePreviousState();
 
     void updateCarState(const QJsonObject &json);
+
+    void updatePosition();
 
     bool collidesWith(Car &otherCar);
 
