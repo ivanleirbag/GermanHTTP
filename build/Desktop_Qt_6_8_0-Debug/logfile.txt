@@ -1,428 +1,6 @@
 Oppenning port 8080...
 Successfully oppened port 8080.
-CONNECTING: ::ffff:127.0.0.1: 33418
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
-DISCONNECTING: ::ffff:127.0.0.1: 33418
-CONNECTING: ::ffff:127.0.0.1: 33426
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-
+CONNECTING: ::ffff:127.0.0.1: 44084
 GET /race4 HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
@@ -453,13 +31,85 @@ Sec-Fetch-Mode: navigate
 Sec-Fetch-Site: none
 Sec-Fetch-User: ?1
 Priority: u=0, i
-HTTP/1.1 404 Not Found
+HTTP/1.1 200 OK
 Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 33426
-CONNECTING: ::ffff:127.0.0.1: 33442
-GET /favicon.ico HTTP/1.1
+DISCONNECTING: ::ffff:127.0.0.1: 44084
+CONNECTING: ::ffff:127.0.0.1: 44094
+CONNECTING: ::ffff:127.0.0.1: 44100
+GET /styles.css HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/race4
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=2
+
+
+GET /styles.css HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/race4
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+Priority: u=2
+HTTP/1.1 200 OK
+Content-Type: text/css
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 44094
+GET /game.js HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/race4
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+GET /game.js HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/race4
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+HTTP/1.1 200 OK
+Content-Type: text/javascript
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 44100
+CONNECTING: ::ffff:127.0.0.1: 44106
+GET /assets/tracks/background.jpg HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -467,13 +117,14 @@ Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
 Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/race4
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: cross-site
-Priority: u=6
+Sec-Fetch-Site: same-origin
+Priority: u=5
 
 
-GET /favicon.ico HTTP/1.1
+GET /assets/tracks/background.jpg HTTP/1.1
 Host: localhost:8080
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
 Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
@@ -481,14 +132,49 @@ Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
 Accept-Encoding: gzip, deflate, br, zstd
 Connection: keep-alive
 Referer: http://localhost:8080/race4
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
 Sec-Fetch-Dest: image
 Sec-Fetch-Mode: no-cors
-Sec-Fetch-Site: cross-site
-Priority: u=6
+Sec-Fetch-Site: same-origin
+Priority: u=5
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Transfer-Encoding: chunked
+Connection: keep-alive
+
+
+DISCONNECTING: ::ffff:127.0.0.1: 44106
+CONNECTING: ::ffff:127.0.0.1: 44120
+GET /race4/getState HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Referer: http://localhost:8080/race4
+Connection: keep-alive
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=4
+
+
+GET /race4/getState HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0
+Accept: */*
+Accept-Language: es-AR,es;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br, zstd
+Referer: http://localhost:8080/race4
+Connection: keep-alive
+Cookie: PHPSESSID=n2ohd80hblk2f3n9hsf9uic6il
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Priority: u=4
 HTTP/1.1 404 Not Found
 Content-Type: text/html
 
 
-DISCONNECTING: ::ffff:127.0.0.1: 33442
-Closing port 8080...
-Successfully closed port 8080.
+DISCONNECTING: ::ffff:127.0.0.1: 44120

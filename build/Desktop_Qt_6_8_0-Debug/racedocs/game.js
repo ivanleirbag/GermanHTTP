@@ -6,6 +6,7 @@ canvas.height = 600;
 let carImage = new Image();
 let trackImage = new Image();
 let carID;
+let imgID;
 let carState = {
     posX: 0,
     posY: 0,
@@ -19,14 +20,15 @@ let carState = {
 const serverUrl = 'http://localhost:8080';
 
 // Cargar el fondo del circuito
-trackImage.src = `${serverUrl}/racedocs/assets/tracks/background.jpg`;
+trackImage.src = `${serverUrl}/assets/tracks/background.jpg`;
 
 // Solicitar la imagen del auto
 async function requestCarImage() {
     const response = await fetch(`${serverUrl}/race4/getState`);
     const data = await response.json();
     carID = data.carID;
-    carImage.src = `${serverUrl}/racedocs/assets/cars/car${carID}.png`;
+    imgID = data.imgID;
+    carImage.src = `${serverUrl}/assets/cars/car${imgID}.png`;
 }
 
 // Escalar la imagen del auto
@@ -86,7 +88,7 @@ function updateGameState(gameState) {
 
     for (const car of gameState.cars) {
         const carImg = new Image();
-        carImg.src = `${serverUrl}/assets/cars/${car.ID}.png`;
+        carImg.src = `${serverUrl}/assets/carImage`;
         ctx.drawImage(carImg, car.posX, car.posY, 20, 20);
     }
 }

@@ -1,11 +1,12 @@
 #include "car.h"
 
 
-Car::Car(QString& carImgDir, QString& clientIP, int initX, int initY, int radius, float sDirection)
+Car::Car(QString& carImgDir, int simgID,QString& clientIP, int initX, int initY, int radius, float sDirection)
     : hitbox(radius)
 {
     setImage(carImgDir);
     ID = clientIP;
+    imgID = simgID;
     position.setX(initX);
     position.setY(initY);
     hitbox.updatePosition(position);
@@ -84,6 +85,7 @@ QJsonObject Car::carStateJson()
 {
     QJsonObject json;
     json["id"] = ID;
+    json["imgID"] = imgID;
     json["posX"] = position.x();
     json["posY"] = position.y();
     json["speed"] = speed;

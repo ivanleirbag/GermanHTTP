@@ -15,6 +15,7 @@ class Car
 public:
     //Public Vars
     QString ID;
+    int imgID;
     int posX;
     int posY;
     int speed;
@@ -34,7 +35,7 @@ public:
      * @param initX
      * @param initY
      */
-    Car(QString& carImgDir, QString& clientIP, int initX, int initY, int radius, float sDirection);
+    Car(QString& carImgDir, int simgID, QString& clientIP, int initX, int initY, int radius, float sDirection);
 
     /**
      * @brief getImage

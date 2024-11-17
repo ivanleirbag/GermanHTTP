@@ -65,6 +65,7 @@ private:
     //SERVER VARS
     QTcpServer *QTcpMainServer;
     QList<QTcpSocket *>clients;
+    QList<QTcpSocket *> race4Clients;
     GLM *glm;
     QTimer *gameTimer;
 

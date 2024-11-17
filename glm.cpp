@@ -65,7 +65,7 @@ void GLM::updateGameState(const QJsonArray &clientInputs) {
 int GLM::getNextAvailableCar()
 {
     if (cars.size() < 4){
-        return cars.max_size()+1;
+        return cars.size()+1;
     }else{
         return -1;
     }

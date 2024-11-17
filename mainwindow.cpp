@@ -74,6 +74,7 @@ void MainWindow::onClientDisconnect()
         QTcpMainServer->children().at(clientIndex)->deleteLater();
     }
 
+    race4Clients.removeAll(client);
     ui->plainTextEdit->appendPlainText(clientStr);
     writeLogFile();
 }
@@ -147,13 +148,17 @@ void MainWindow::updateRace4State()
 
     QByteArray gameStateJson = glm->getGameState();
 
-    for(QTcpSocket *client : clients){
-        if(client->isOpen()){
-            client->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n");
-            ui->plainTextEdit->appendPlainText("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n");
-            writeLogFile();
+    for (QTcpSocket *client : race4Clients) {
+        if (client->isOpen()) {
+            QString header = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n";
+            client->write(header.toUtf8());
             client->write(gameStateJson);
+            client->write("\r\n");
             client->flush();
+
+            QString logMsg = header + QString(gameStateJson);
+            ui->plainTextEdit->appendPlainText(logMsg);
+            writeLogFile();
         }
     }
 }
@@ -203,7 +208,7 @@ void MainWindow::onClientRequest()
 void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
 {
     QFile fileRequested;
-    QString resourcePath = workingDir + "/htdocs";
+    QString resourcePath = workingDir + "/racedocs";
     QString header;
     QByteArray response;
 
@@ -212,14 +217,17 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
     }
     //RACE GAME DEBUG
     else if(uri == "/race4"){
-        resourcePath = resourcePath + "/racedocs/race4.html";
+        resourcePath = workingDir + "/racedocs/race4.html";
+        if (!race4Clients.contains(client)) {
+            race4Clients.append(client);
+        }
     }
     else if (uri == "/race4/getState") {
         QString carID = client->peerAddress().toString() + ":" + QString::number(client->peerPort());
         int carImgID = glm->getNextAvailableCar();
         if (carImgID > 0){
             QString carImage = workingDir + "/racedocs/assets/cars/car" + QString::asprintf("%d", carImgID) + ".png";
-            Car car(carImage, carID, 0, 0, 20, 0);
+            Car car(carImage, carImgID, carID, 0, 0, 20, 0);
             glm->addCar(car);
             QJsonObject response;
             response["carID"] = carImgID;
