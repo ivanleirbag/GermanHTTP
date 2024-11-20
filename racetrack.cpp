@@ -58,7 +58,6 @@ void RaceTrack::loadTrackFromImage(QString &pathMapDir) {
     }
 
     qDebug() << "Máscara de pista cargada. Tamaño:" << trackMask.size();
-    qDebug() << "Mascara: " << trackMask.colorTable();
     qDebug() << trackMask.save("trackMask_debug.png");
 
 }

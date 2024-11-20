@@ -22,6 +22,8 @@ public:
 
     int getNextAvailableCar();
 
+    void clearGLM();
+
     QByteArray getGameState();
 
 private:

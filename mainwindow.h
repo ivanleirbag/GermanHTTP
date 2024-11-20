@@ -14,7 +14,7 @@
 #include <QRegularExpression>
 #include <QJsonObject>
 #include <QJsonDocument>
-
+#include <QMutex>
 
 #include <QtNetwork/QTcpServer>
 #include <QtNetwork/QTcpSocket>
@@ -49,8 +49,6 @@ private slots:
 
     void on_OpenPortBttn_clicked();
 
-    void updateRace4State();
-
     void onClientReqstGET(QString route, QTcpSocket *client);
     void onClientReqstPOST(QString uri,  QTcpSocket* client, const QByteArray &dataSent);
     void onClientReqstPUT(QString uri,  QTcpSocket* client, QByteArray &dataSent);
@@ -62,9 +60,10 @@ private:
     //SERVER VARS
     QTcpServer *QTcpMainServer;
     QList<QTcpSocket *>clients;
-    QList<QTcpSocket *> race4Clients;
+    QList<QTcpSocket *>race4Clients;
     GLM *glm;
-
+    QMutex raceMutex;
+    QMutex glmMutex;
     //WORKING DIRECTORY
     QString workingDir = QCoreApplication::applicationDirPath();
 };

@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = 500;
 canvas.height = 600;
+let gameOver = false;
 
 //clase para hacer la manzana
 
@@ -37,7 +38,8 @@ class apple {
                 x: Math.floor(Math.random() * (canvas.width - this.radio * 2) + this.radio),
                 y: Math.floor(Math.random() * (canvas.height - this.radio * 2) + this.radio)
             }
-    }
+            snake.agregarCabeza();
+        }
     }
 }
 
@@ -82,19 +84,20 @@ class snake {
             D: false
         };
         this.tecladoPulse();
+        this.direccion = { x: 1, y: 0 };
         
     }
 
     InicioJuego() {
         for(let i = 0; i < 3; i++) {
-          let path = [];
-          for(let j = 0; j < 12; j++) {
+            let path = [];
+            for(let j = 0; j < 12; j++) {
             path.push({
-              x:this.posicion.x,
-              y:this.posicion.y
+            x:this.posicion.x,
+            y:this.posicion.y
             })
-          }
-          this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
+        }
+        this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
         }
         this.dibujoCuerpo(); 
       } 
@@ -108,6 +111,18 @@ class snake {
 
     }
 
+    agregarCabeza() {
+        let path = [];
+        for(let j = 0; j < 5; j++) {
+            path.push({
+            // accedemos al ultimo lugar del cuerpo para agregar el nuevo cuerpo
+            x:this.body.slice(-1)[0].path.slice(-1)[0].x,
+            y:this.body.slice(-1)[0].path.slice(-1)[0].y
+            })
+        }
+        this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
+        }
+    
     dibujoCabeza () {
         this.dibujoCirculo(this.posicion.x, this.posicion.y,this.radio, this.color);
 
@@ -132,7 +147,9 @@ class snake {
             this.rotacion += 0.04;        }
         this.posicion.x += Math.cos(this.rotacion) * this.velocidad;
         this.posicion.y += Math.sin(this.rotacion) * this.velocidad;
+
         
+        this.colision();
         
     }
 
@@ -167,10 +184,12 @@ class snake {
         document.addEventListener("keydown", (e) => {
             if(e.key == 'a' || e.key == 'A' || e.key == 'ArrowLeft' ) {
                 this.teclas.A = true;
+                this.direccion = { x: -1, y: 0 };
                 
             }
             if(e.key == 'd' || e.key == 'D' || e.key == 'ArrowRight') {
                 this.teclas.D = true;
+                this.direccion = { x: 1, y: 0 };
                 
             }
         })
@@ -186,11 +205,32 @@ class snake {
             }
         })
     }
+
+    colision() {
+        if (this.posicion.x + this.radio > canvas.width) {
+            this.posicion.x = 0 + this.radio; // Teletransportar al borde izquierdo
+        } 
+        if (this.posicion.x - this.radio < 0) {
+            this.posicion.x = canvas.width - this.radio; // Teletransportar al borde derecho
+        }
+        if (this.posicion.y + this.radio > canvas.height) {
+            this.posicion.y = 0 + this.radio; // Teletransportar al borde superior
+        }
+        if (this.posicion.y - this.radio < 0) {
+            this.posicion.y = canvas.height - this.radio; // Teletransportar al borde inferior
+        }
+        for (let i = 0; i < this.path-1; i++){
+            if(this.posicion.y + this.radio === this.body.slice(-1)[i].path.y
+              && this.posicion.x + this.radio === this.body.slice(-1)[i].path.x){
+                gameOver = true;
+              }
+        }
+    }
 }
 
 // creamos una instancia de la mismisima clase snake
 
-const SnakeFrost = new snake({x: 100, y: 100}, 13, 2, "#ff0094", ctx);
+const SnakeFrost = new snake({x: 100, y: 100}, 12, 2, "#ff0094", ctx);
 SnakeFrost.InicioJuego();
 const manzanaFood = new apple({x: 100, y: 100}, 8, "red", ctx);
 
@@ -215,10 +255,12 @@ function fondoSnake() {
 }
 
 function InitGame() {
-    fondoSnake();
-    SnakeFrost.actualizar();
-    manzanaFood.dibujo();
-    manzanaFood.colision(SnakeFrost);
-    requestAnimationFrame(InitGame);
+    if(!gameOver){
+        fondoSnake();
+        SnakeFrost.actualizar();
+        manzanaFood.dibujo();
+        manzanaFood.colision(SnakeFrost);
+        requestAnimationFrame(InitGame);
+    }
 }
 InitGame(); 

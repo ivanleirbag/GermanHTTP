@@ -8,7 +8,7 @@ GLM::GLM(QString &trackPath, QString &backgroundPath)
 
 void GLM::addCar(Car &car) {
     //CHECKS FOR CAR DUPLICATES
-    for (const auto &existingCar : cars) {
+    for ( Car &existingCar : cars) {
         if (existingCar.ID == car.ID) {
             return;
         }
@@ -16,13 +16,6 @@ void GLM::addCar(Car &car) {
 
     if (cars.size() < 4){
         cars.append(car);
-        QJsonObject initStatejson;
-        initStatejson["posX"] = 550;
-        initStatejson["posY"] = 495+(40*(car.ID-1));
-        initStatejson["speed"] = 0;
-        initStatejson["direction"] = 0;
-
-        car.updateCarState(initStatejson);
     }else{
         return;
     }
@@ -56,7 +49,7 @@ void GLM::updateGameState() {
 void GLM::updateGameState(const QJsonObject &clientInputs) {
     int carID = clientInputs["ID"].toInt();
 
-    for (auto &car : cars) {
+    for (Car &car : cars) {
         if (carID == car.ID) {
             updateCarState(car, clientInputs);
             car.updatePosition();
@@ -85,6 +78,11 @@ int GLM::getNextAvailableCar()
     }
 }
 
+void GLM::clearGLM()
+{
+    cars.clear();
+}
+
 
 void GLM::updateCarState(Car &car, const QJsonObject &json)
 {
@@ -110,13 +108,11 @@ QByteArray GLM::getGameState() {
     QJsonObject gameState;
     QJsonArray carsArray;
 
-    //qDebug() << "numero de autos en el servidor:" << cars.size();
-    for (auto &car : cars) {
+    for (Car &car : cars) {
         carsArray.append(car.carStateJson());
     }
 
     gameState["cars"] = carsArray;
-    qDebug() << "Autos en el servidor: " << cars.size();
     return QJsonDocument(gameState).toJson();
 }
 

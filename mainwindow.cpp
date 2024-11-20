@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-//PeerPort o PeerAddress
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     QTcpMainServer = new QTcpServer(this);
+    QTcpMainServer->setMaxPendingConnections(100);
     connect(QTcpMainServer, &QTcpServer::newConnection, this, &MainWindow::onNewConnection);
 
 
@@ -47,7 +47,6 @@ void MainWindow::onNewConnection()
     writeLogFile();
 }
 
-
 void MainWindow::onClientDisconnect()
 {
     int clientIndex;
@@ -65,13 +64,20 @@ void MainWindow::onClientDisconnect()
                              .arg(client->peerAddress().toString())
                              .arg(client->peerPort());
 
-    glm->removeCar(clientip, clientport);
-    race4Clients.removeAll(client);
+    if(client->state() != QTcpSocket::ConnectedState){
+        glm->removeCar(clientip, clientport);
+        for(const auto raceClient : race4Clients){
+            if (raceClient == client){
+                race4Clients.removeAll(client);
+            }
+        }
+    }
 
     clientIndex = clients.indexOf(client);
     if(clientIndex != -1){
         clients.takeAt(clientIndex);
     }
+
 
     clientIndex = QTcpMainServer->children().indexOf(client);
     if (clientIndex >= 0 && clientIndex < QTcpMainServer->children().count()) {
@@ -83,6 +89,7 @@ void MainWindow::onClientDisconnect()
     ui->plainTextEdit->appendPlainText(clientInfo);
     writeLogFile();
 }
+
 
 void MainWindow::writeLogFile()
 {
@@ -111,26 +118,31 @@ void MainWindow::on_OpenPortBttn_clicked()
     port = ui->SVPortSetter->text().toUShort(&ok);
 
     if(QTcpMainServer->isListening()){
+        {
+            QMutexLocker raceLocker(&raceMutex);
 
-        QTextStream(&oppMsg)<<"Closing port "<<port<<"...";
-        ui->plainTextEdit->appendPlainText(oppMsg);
-        oppMsg.clear();
+            QTextStream(&oppMsg)<<"Closing port "<<port<<"...";
+            ui->plainTextEdit->appendPlainText(oppMsg);
+            oppMsg.clear();
 
-        //DISCONNECTS ALL CLIENTS
-        while(clients.count()){
-            QTcpSocket *client = clients.takeAt(0);
-            client->disconnectFromHost();
-            client->close();
-            client->deleteLater();
+            //DISCONNECTS ALL CLIENTS
+            while(clients.count()){
+                QTcpSocket *client = clients.takeAt(0);
+                client->disconnectFromHost();
+                client->close();
+                client->deleteLater();
+            }
+            race4Clients.clear();
+            QTcpMainServer->close();
+
+            QTextStream(&oppMsg)<<"Successfully closed port "<<port<<".";
+            ui->plainTextEdit->appendPlainText(oppMsg);
+            oppMsg.clear();
+
+            glm->clearGLM();
+
+            ui->OpenPortBttn->setText("OPEN PORT");
         }
-        race4Clients.clear();
-        QTcpMainServer->close();
-
-        QTextStream(&oppMsg)<<"Successfully closed port "<<port<<".";
-        ui->plainTextEdit->appendPlainText(oppMsg);
-        oppMsg.clear();
-
-        ui->OpenPortBttn->setText("OPEN PORT");
     }
     else{
         if(ok){
@@ -151,10 +163,6 @@ void MainWindow::on_OpenPortBttn_clicked()
     writeLogFile();
 }
 
-void MainWindow::updateRace4State()
-{
-    return;
-}
 
 void MainWindow::onClientRequest()
 {
@@ -165,11 +173,16 @@ void MainWindow::onClientRequest()
 
     QTcpSocket *client = static_cast<QTcpSocket *>(QObject::sender());
 
+    if (!client || client->state() != QTcpSocket::ConnectedState) {
+        qDebug() << "Client not connected...";
+        return;
+    }
+
     if (client->bytesAvailable() > 0) {
         dataSent = client->readAll();
         strDataSent = QString(dataSent);
     } else {
-        return;  //Try to read later
+        return;
     }
     ui->plainTextEdit->appendPlainText(strDataSent);
 
@@ -178,8 +191,18 @@ void MainWindow::onClientRequest()
     requestLines = strDataSent.split("\r\n")[0];
     ui->plainTextEdit->appendPlainText(dataSent.left(headerIndex));
 
-    //METHOD PROCESSING
-    reqstLinesTokens = requestLines.split(" ");
+    {
+        QMutexLocker raceLocker(&raceMutex);
+        //METHOD PROCESSING
+        reqstLinesTokens = requestLines.split(" ");
+        qDebug() << "race4Clients size:" << race4Clients.size();
+        for (auto c : race4Clients) {
+            qDebug() << "Client:" << c->peerAddress().toString() << ":" << c->peerPort();
+        }
+        if(race4Clients.size() == 0){
+            glm->clearGLM();
+        }
+    }
 
     if(reqstLinesTokens[0] == "GET"){
         onClientReqstGET(reqstLinesTokens[1], client);
@@ -206,33 +229,44 @@ void MainWindow::onClientReqstGET(QString uri,  QTcpSocket* client)
         resourcePath = resourcePath + "/racedocs/race4.html";
 
     }else if(uri == "/race4/join"){
-        if (race4Clients.size() < 4) {
-            if (!race4Clients.contains(client)) {
-                race4Clients.append(client);
 
-                QString clientIP = client->peerAddress().toString();
-                qint16 clientport = client->peerPort();
-                int carImgID = glm->getNextAvailableCar();
-                if (carImgID > 0){
-                    QString carImage = resourcePath + "/racedocs/assets/cars/car" + QString::asprintf("%d", carImgID) + ".png";
-                    Car car(carImage, carImgID, 100, 100, 20, 0 , clientIP, clientport);
-                    glm->addCar(car);
-                    // Generar el JSON del coche
-                    QJsonObject carJson = car.carStateJson();
-                    QJsonDocument jsonResponse(carJson);
-                    QByteArray jsonData = jsonResponse.toJson();
+        QMutexLocker raceLocker(&raceMutex);
 
-                    // Enviar el JSON al cliente
-                    QString response = QString("HTTP/1.1 200 OK\r\n"
-                                               "Content-Type: application/json\r\n"
-                                               "Content-Length: %1\r\n"
-                                               "Connection: keep-alive\r\n\r\n")
-                                           .arg(jsonData.size());
-                    client->write(response.toUtf8());
-                    client->write(jsonData);
-                    client->flush();
-                    return;
-                }
+        if (client->state() != QTcpSocket::ConnectedState) {
+            qDebug() << "Client is not in ConnectedState";
+            return;
+        }
+        if (race4Clients.size() < 4 && !race4Clients.contains(client)) {
+            race4Clients.append(client);
+            qDebug() << "------------------";
+            for (const auto client : race4Clients){
+                qDebug() << "Client connected: " << client;
+            }
+
+            QString clientIP = client->peerAddress().toString();
+            qint16 clientport = client->peerPort();
+
+            {
+            QMutexLocker glmLocker(&glmMutex);
+            int carImgID = glm->getNextAvailableCar();
+            QString carImage = resourcePath + "/racedocs/assets/cars/car" + QString::asprintf("%d", carImgID) + ".png";
+
+            Car car(carImage, carImgID, 550, 495+(40*(carImgID-1)), 20, 0 , clientIP, clientport);
+            glm->addCar(car);
+
+            QJsonObject carJson = car.carStateJson();
+            QJsonDocument jsonResponse(carJson);
+            QByteArray jsonData = jsonResponse.toJson();
+
+            QString response = QString("HTTP/1.1 200 OK\r\n"
+                                       "Content-Type: application/json\r\n"
+                                       "Content-Length: %1\r\n"
+                                       "Connection: keep-alive\r\n\r\n")
+                                   .arg(jsonData.size());
+            client->write(response.toUtf8());
+            client->write(jsonData);
+            client->flush();
+            return;
             }
         }else {
             client->write("HTTP/1.1 403 Forbidden\r\nContent-Type: text/plain\r\n\r\nMax player capacity reached.");
@@ -333,18 +367,22 @@ void MainWindow::onClientReqstPOST(QString uri,  QTcpSocket* client, const QByte
     QString header;
 
     if (uri == "/race4/updateState") {
+        QMutexLocker glmLocker(&glmMutex);
         QJsonDocument inputDoc = QJsonDocument::fromJson(dataSent);
 
         glm->updateGameState(inputDoc.object());
         QByteArray gameState = glm->getGameState();
 
-        if (client->state() == QTcpSocket::ConnectedState){
+        if (client->state() == QTcpSocket::ConnectedState) {
             client->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n");
             client->write("Content-Length: " + QByteArray::number(gameState.size()) + "\r\n");
             client->write("Connection: keep-alive\r\n\r\n");
             client->write(gameState);
             client->flush();
+        }else{
+            qDebug() << "Client is not connected";
         }
+
         return;
     }
 

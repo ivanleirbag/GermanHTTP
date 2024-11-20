@@ -56,8 +56,8 @@ void Car::restorePreviousState()
   //  qDebug() << " prevx " << prevPosX << " prevy " << prevPosY<< " prevspeed " << speed<< " prevdir " << prevDirection;
     speed = prevSpeed;
     direction = prevDirection;
-    position.setX(prevPosX - 3*qCos(direction));
-    position.setY(prevPosY - 3*qSin(direction));
+    position.setX(prevPosX);
+    position.setY(prevPosY);
     hitbox.updatePosition(position);
 }
 
