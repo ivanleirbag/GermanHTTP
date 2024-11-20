@@ -1,5 +1,6 @@
 #include "glm.h"
 
+
 GLM::GLM(QString &trackPath, QString &backgroundPath)
     : raceTrack(trackPath, backgroundPath) {
 
@@ -8,13 +9,20 @@ GLM::GLM(QString &trackPath, QString &backgroundPath)
 void GLM::addCar(Car &car) {
     //CHECKS FOR CAR DUPLICATES
     for (const auto &existingCar : cars) {
-        if (existingCar.imgID == car.imgID) {
+        if (existingCar.ID == car.ID) {
             return;
         }
     }
 
     if (cars.size() < 4){
         cars.append(car);
+        QJsonObject initStatejson;
+        initStatejson["posX"] = 550;
+        initStatejson["posY"] = 495+(40*(car.ID-1));
+        initStatejson["speed"] = 0;
+        initStatejson["direction"] = 0;
+
+        car.updateCarState(initStatejson);
     }else{
         return;
     }
@@ -38,7 +46,7 @@ void GLM::updateGameState() {
         }
 
         for (Car &otherCar : cars) {
-            if (car.imgID != otherCar.imgID && car.collidesWith(otherCar)) {
+            if (car.ID != otherCar.ID && car.collidesWith(otherCar)) {
                 car.restorePreviousState();
             }
         }
@@ -46,20 +54,19 @@ void GLM::updateGameState() {
 }
 
 void GLM::updateGameState(const QJsonObject &clientInputs) {
-    int carimgID = clientInputs["imgID"].toInt();
+    int carID = clientInputs["ID"].toInt();
 
     for (auto &car : cars) {
-        if (carimgID == car.imgID) {
+        if (carID == car.ID) {
             updateCarState(car, clientInputs);
             car.updatePosition();
             if (raceTrack.isOnTrack(car) == false) {
                 car.restorePreviousState();
-                qDebug() << "car not on track";
                 return;
             }
 
             for (Car &otherCar : cars) {
-                if (car.imgID != otherCar.imgID && car.collidesWith(otherCar)) {
+                if (car.ID != otherCar.ID && car.collidesWith(otherCar)) {
                     car.restorePreviousState();
                     return;
                 }
@@ -90,7 +97,7 @@ void GLM::updateCarState(Car &car, const QJsonObject &json)
     }
 
     for (Car &otherCar : cars) {
-        if (car.imgID != otherCar.imgID && car.collidesWith(otherCar)) {
+        if (car.ID != otherCar.ID && car.collidesWith(otherCar)) {
             car.restorePreviousState();
             return;
         }
@@ -109,6 +116,7 @@ QByteArray GLM::getGameState() {
     }
 
     gameState["cars"] = carsArray;
+    qDebug() << "Autos en el servidor: " << cars.size();
     return QJsonDocument(gameState).toJson();
 }
 

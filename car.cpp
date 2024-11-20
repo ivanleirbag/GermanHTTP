@@ -1,12 +1,11 @@
 #include "car.h"
 
 
-Car::Car(QString& carImgDir, int simgID, float initX, float initY, float radius, float sDirection, QString sclientip, qint16 sclientport)
+Car::Car(QString& carImgDir, int sID, float initX, float initY, float radius, float sDirection, QString sclientip, qint16 sclientport)
     : hitbox(radius)
 {
     setImage(carImgDir);
-    //ID = clientIP;
-    imgID = simgID;
+    ID = sID;
     posX = initX;
     posY = initY;
     position.setX(initX);
@@ -22,8 +21,7 @@ Car::Car(QString& carImgDir, int simgID, float initX, float initY, float radius,
     prevPosY = initY;
     prevSpeed = speed;
     prevDirection = sDirection;
-    qDebug() << "Inicializando Car con posX:" << posX << "posY:" << posY;
-     qDebug() << "Inicializando Car con prevPosX:" << prevPosX << "prevPosY:" << prevPosY;
+
 }
 
 void Car::setImage(QString &carImgDir)
@@ -58,8 +56,8 @@ void Car::restorePreviousState()
   //  qDebug() << " prevx " << prevPosX << " prevy " << prevPosY<< " prevspeed " << speed<< " prevdir " << prevDirection;
     speed = prevSpeed;
     direction = prevDirection;
-    position.setX(prevPosX);
-    position.setY(prevPosY);
+    position.setX(prevPosX - 3*qCos(direction));
+    position.setY(prevPosY - 3*qSin(direction));
     hitbox.updatePosition(position);
 }
 
@@ -82,10 +80,10 @@ void Car::updatePosition()
     float newX = (position.x()+xIncrement);
     float newY = (position.y()+yIncrement);
 
-    if (!(newX > 0 && newX < 800)){
+    if (!(newX > 0)){
         newX = position.x();
     }
-    if (!(newY > 0 && newY < 600)){
+    if (!(newY > 0)){
         newY = position.y();
     }
     position.setX(newX);
@@ -101,8 +99,7 @@ bool Car::collidesWith(Car &otherCar)
 QJsonObject Car::carStateJson()
 {
     QJsonObject json;
-    //json["id"] = ID;
-    json["imgID"] = imgID;
+    json["ID"] = ID;
     json["posX"] = position.x();
     json["posY"] = position.y();
     json["speed"] = speed;

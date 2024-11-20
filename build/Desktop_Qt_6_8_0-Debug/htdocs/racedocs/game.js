@@ -1,12 +1,12 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = 1000;
+canvas.height = 750;
 
 let carImages = [];
 let carState = {
     //id: "",
-    imgID: 0,
+    ID: 0,
     posX: 0,
     posY: 0,
     speed: 0,
@@ -30,7 +30,7 @@ async function joinRace() {
 
         // Asignar el estado inicial del coche desde el JSON recibido
         //carState.id = data.id;
-        carState.imgID = data.imgID;
+        carState.ID = data.ID;
         carState.posX = data.posX;
         carState.posY = data.posY;
         carState.speed = data.speed;
@@ -75,17 +75,17 @@ async function requestCarData() {
         const data = await response.json();
 
         // Iterar sobre la lista de autos para encontrar el que coincide con el carID del cliente
-        const clientCar = data.cars.find(car => car.imgID === carState.imgID);
+        const clientCar = data.cars.find(car => car.ID === carState.ID);
 
         if (clientCar) {
             //carState.id = clientCar.id;
-            carState.imgID = clientCar.imgID;
+            carState.ID = clientCar.ID;
             carState.posX = clientCar.posX;
             carState.posY = clientCar.posY;
             carState.speed = clientCar.speed;
             carState.direction = clientCar.direction;
         } else {
-            console.warn(`No se encontró un coche con carID: ${carState.imgID}`);
+            console.warn(`No se encontró un coche con carID: ${carState.ID}`);
         }
     } catch (error) {
         console.error("Error al solicitar el estado del auto:", error);
@@ -96,7 +96,7 @@ async function requestCarData() {
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'ArrowUp':
-            if (carState.speed < 15){
+            if (carState.speed < 17){
                 carState.speed += 2;
             }
             break;
@@ -107,7 +107,9 @@ document.addEventListener('keydown', (event) => {
             carState.direction += 0.05; // Girar a la derecha
             break;
         case 'ArrowDown':
-            carState.speed = Math.max(0, carState.speed - 1);
+            if(carState.speed  > -15){
+                carState.speed -= 1;
+            }
             break;
     }
 });
@@ -122,7 +124,7 @@ async function sendCarState() {
             },
             body: JSON.stringify({
                 //id: carState.id,
-                imgID: carState.imgID,
+                ID: carState.ID,
                 posX: carState.posX,
                 posY: carState.posY,
                 speed: carState.speed,
@@ -143,12 +145,12 @@ function updateGameState(gameState) {
     ctx.drawImage(trackImage, 0, 0, canvas.width, canvas.height); // Dibujar el fondo
 
     for (const car of gameState.cars) {
-        const carImg = carImages[car.imgID - 1]; // Ajustar según el imgID
+        const carImg = carImages[car.ID - 1]; // Ajustar según el imgID
         if (!carImg) {
-            console.error(`No se encontró una imagen para imgID: ${car.imgID}`);
+            console.error(`No se encontró una imagen para imgID: ${car.ID}`);
             continue; // Saltar al siguiente coche
         }
-        if (carState.imgID === car.imgID){
+        if (carState.ID === car.ID){
             carState.posX = car.posX;
             carState.posY = car.posY;
             carState.speed = car.speed;
@@ -169,14 +171,14 @@ function updateGameState(gameState) {
             // Restaurar el estado del contexto
             ctx.restore();
         } else {
-            console.error(`No se pudo encontrar la imagen para el coche con imgID: ${car.imgID}`);
+            console.error(`No se pudo encontrar la imagen para el coche con imgID: ${car.ID}`);
         }
     }
 }
 
 // Controlar el intervalo para enviar los datos
 let lastUpdateTime = 0;
-const updateInterval = 100; // 100ms, es decir, 10 veces por segundo
+const updateInterval = 70; // 100ms, es decir, 10 veces por segundo
 
 // Loop de renderizado y actualización
 function gameLoop(timestamp) {
