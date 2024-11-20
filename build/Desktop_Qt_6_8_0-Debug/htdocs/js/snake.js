@@ -1,240 +1,224 @@
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
 
+canvas.width = 500;
+canvas.height = 600;
 
-const titleMessages = ["¡Bienvenido a la viborita!", "¡Prepárate para la ganar!", "¿Listo para jugar?"];
-let titleIndex = 0;
+//clase para hacer la manzana
 
-function changeTitle() {
-    document.title = titleMessages[titleIndex];
-    titleIndex = (titleIndex + 1) % titleMessages.length;
-}
+class apple {
+    constructor(posicion, radio, color, contexto) {
+        this.posicion = posicion;
+        this.radio = radio;
+        this.color = color;
+        this.contexto = contexto;
 
-
-setInterval(changeTitle, 5000);
-
-var canvas = document.getElementById('game');
-var context = canvas.getContext('2d');
-
-var grid = 16;
-var count = 0;
-
-var snake = {
-    x: 160,
-    y: 160,
-    dx: grid,
-    dy: 0,
-    cells: [],
-    maxCells: 4
-};
-
-var apple = {
-    x: 320,
-    y: 320
-};
-
-var score = 0;
-var bestScore = 0;
-var lastScoreIncrement = 0;
-var gamePaused = false;
-var gameOver = false;
-var gameOverTransition = 0;
-var baseSpeed = 100;
-var currentSpeed = baseSpeed;
-var speedIncrement = 50;
-var gameOverTimer = 0;
-var gameOverDisplayTime = 2000;
-var transitionStartTime = 0;
-var pauseImage = new Image();
-pauseImage.src = 'assets/pausasnake.png'; // Cambia esto a la ruta de tu imagen
-
-
-var gameOverImage = new Image();
-gameOverImage.src = '/assets/gameover.png';
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function drawScore() {
-    context.fillStyle = 'white';
-    context.font = '10px Arial';
-    context.fillText('Best: ' + bestScore + ' pts', 10, 20);
-    context.fillText('Now: ' + score + ' pts', 10, 40);
-}
-
-function drawGameOver() {
-    context.drawImage(gameOverImage, 0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'rgba(255, 0, 0, ' + gameOverTransition + ')';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'white';
-    context.font = '20px Arial';
-    context.fillText('Perdiste', canvas.width / 2 - 50, canvas.height / 2 - 10);
-    context.fillText('R para reiniciar', canvas.width / 2 - 80, canvas.height / 2 + 10);
-}
-
-function drawPauseMenu() {
-    context.fillStyle = 'rgba(0, 0, 0, 0.8)';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    
-    context.drawImage(pauseImage, canvas.width / 2 - 100, canvas.height / 2 - 80, 200, 100); // Ajusta las coordenadas y el tamaño según necesites
-
-    context.fillStyle = 'white';
-    context.font = '30px Arial';
-    context.fillText('PAUSA', canvas.width / 2 - 50, canvas.height / 2 - 10);
-    context.font = '20px Arial';
-    context.fillText('C para Continuar', canvas.width / 2 - 100, canvas.height / 2 + 10);
-    context.fillText('R para reiniciar', canvas.width / 2 - 100, canvas.height / 2 + 40);
-    context.fillText('Q para Salir', canvas.width / 2 - 80, canvas.height / 2 + 70);
-}
-
-function loop() {
-    requestAnimationFrame(loop);
-    if (++count < 4) {
-        return;
     }
 
-    count = 0;
-
-    if (gamePaused) {
-        drawPauseMenu();
-        return;
+    dibujo() {
+        this.contexto.beginPath();
+        this.contexto.arc(this.posicion.x, this.posicion.y, this.radio, 0, 2 * Math.PI);
+        this.contexto.fillStyle = this.color;
+        this.contexto.fill();
+        this.contexto.closePath();
     }
 
-    if (gameOver) {
-        gameOverTimer += 100;
-        if (gameOverTimer >= gameOverDisplayTime) {
-            if (gameOverTransition < 1) {
-                gameOverTransition += 0.05;
-                if (gameOverTransition >= 1) {
-                    gameOverTransition = 1;
-                }
+    colision(snake) {
+        let vector1 = {
+            x: this.posicion.x - snake.posicion.x,
+            y: this.posicion.y - snake.posicion.y
+        };
+        
+        let distancia = Math.sqrt((vector1.x * vector1.x) + (vector1.y * vector1.y));
+
+        if(distancia < snake.radio + this.radio) {
+            this.posicion = {
+                x: Math.floor(Math.random() * (canvas.width - this.radio * 2) + this.radio),
+                y: Math.floor(Math.random() * (canvas.height - this.radio * 2) + this.radio)
             }
-        }
-        drawGameOver();
-        return;
     }
-
-    if (score > lastScoreIncrement && score % 5 === 0) {
-        lastScoreIncrement = score;
-        currentSpeed += speedIncrement;
     }
-
-    context.fillStyle = 'black';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    snake.x += snake.dx;
-    snake.y += snake.dy;
-
-    if (snake.x < 0) {
-        snake.x = canvas.width - grid;
-    } else if (snake.x >= canvas.width) {
-        snake.x = 0;
-    }
-
-    if (snake.y < 0) {
-        snake.y = canvas.height - grid;
-    } else if (snake.y >= canvas.height) {
-        snake.y = 0;
-    }
-
-    snake.cells.unshift({ x: snake.x, y: snake.y });
-
-    if (snake.cells.length > snake.maxCells) {
-        snake.cells.pop();
-    }
-
-    context.fillStyle = 'red';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-
-    context.fillStyle = 'green';
-    snake.cells.forEach(function(cell, index) {
-        context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
-
-        if (cell.x === apple.x && cell.y === apple.y) {
-            snake.maxCells++;
-            score++;
-
-            if (score > bestScore) {
-                bestScore = score;
-            }
-
-            apple.x = getRandomInt(0, 25) * grid;
-            apple.y = getRandomInt(0, 25) * grid;
-        }
-
-        for (var i = index + 1; i < snake.cells.length; i++) {
-            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                gameOver = true;
-                gameOverTransition = 0;
-                gameOverTimer = 0;
-            }
-        }
-    });
-
-    drawScore();
 }
 
-function restartGame() {
-    snake.x = 160;
-    snake.y = 160;
-    snake.cells = [];
-    snake.maxCells = 4;
-    snake.dx = grid;
-    snake.dy = 0;
-    score = 0;
-    gamePaused = false;
-    gameOver = false;
-    gameOverTransition = 0;
-    currentSpeed = baseSpeed;
-    lastScoreIncrement = 0;
-    gameOverTimer = 0;
+// clase para hacer que el cuerpo siga a la cabeza
 
-    apple.x = getRandomInt(0, 25) * grid;
-    apple.y = getRandomInt(0, 25) * grid;
+class CuerpoSnake {
+    constructor(radio,color,contexto,path) {
+        this.radio = radio;
+        this.color = color;
+        this.contexto = contexto;
+        this.path = path;
+    }
+
+    dibujoCirculo(x, y, radio, color) {
+        this.contexto.beginPath();
+        this.contexto.arc(x, y,radio, 0, 2 * Math.PI);
+        this.contexto.fillStyle = color;
+        this.contexto.fill();
+        this.contexto.closePath();
 }
 
-document.addEventListener('keydown', function(e) {
-    if (gameOver) {
-        if (e.which === 82) {
-            restartGame();
-        }
-        return;
-    }
-
-    if (gamePaused) {
-        if (e.which === 67) {
-            gamePaused = false;
-        } else if (e.which === 82) {
-            restartGame();
-        } else if (e.which === 81) {
-            console.log('Salir del juego');
-        }
-        return;
-    }
-
-    if (e.which === 27) {
-        gamePaused = true;
-        return;
-    }
-
-    if (!gameOver) {
-        if (e.which === 37 && snake.dx === 0) {
-            snake.dx = -grid;
-            snake.dy = 0;
-        } else if (e.which === 38 && snake.dy === 0) {
-            snake.dy = -grid;
-            snake.dx = 0;
-        } else if (e.which === 39 && snake.dx === 0) {
-            snake.dx = grid;
-            snake.dy = 0;
-        } else if (e.which === 40 && snake.dy === 0) {
-            snake.dy = grid;
-            snake.dx = 0;
+    dibujo() {
+        for (let i = 0; i < this.path.length; i++) {
+            this.dibujoCirculo(this.path[i].x, this.path[i].y, this.radio, this.color);
         }
     }
-});
+}
 
-loop();
+// clase para hacer la capocha
+class snake {
+
+    constructor(posicion, radio, velocidad, color, contexto) {
+        this.posicion = posicion;
+        this.radio = radio;
+        this.velocidad = velocidad;
+        this.color = color;
+        this.contexto = contexto;
+        this.rotacion = 0;
+        this.body = [];
+        this.teclas = {
+            A: false,
+            D: false
+        };
+        this.tecladoPulse();
+        
+    }
+
+    InicioJuego() {
+        for(let i = 0; i < 3; i++) {
+          let path = [];
+          for(let j = 0; j < 12; j++) {
+            path.push({
+              x:this.posicion.x,
+              y:this.posicion.y
+            })
+          }
+          this.body.push(new CuerpoSnake(this.radio, this.color, this.contexto, path));
+        }
+        this.dibujoCuerpo(); 
+      } 
+
+    dibujoCirculo(x, y, radio, color) {
+        this.contexto.beginPath();
+        this.contexto.arc(x, y,radio, 0, 2 * Math.PI);
+        this.contexto.fillStyle = color;
+        this.contexto.fill();
+        this.contexto.closePath();
+
+    }
+
+    dibujoCabeza () {
+        this.dibujoCirculo(this.posicion.x, this.posicion.y,this.radio, this.color);
+
+        // ojazos nene
+        this.dibujoCirculo(this.posicion.x, this.posicion.y - 9, this.radio - 5, "#fff");
+        this.dibujoCirculo(this.posicion.x + 1, this.posicion.y - 9, this.radio - 7, "#000");
+        this.dibujoCirculo(this.posicion.x + 5, this.posicion.y - 8, this.radio - 11, "#fff");
+
+        this.dibujoCirculo(this.posicion.x, this.posicion.y + 9, this.radio - 5, "#fff");
+        this.dibujoCirculo(this.posicion.x + 1, this.posicion.y + 9, this.radio - 7, "#000");
+        this.dibujoCirculo(this.posicion.x + 5, this.posicion.y + 8, this.radio - 11, "#fff");
+
+    }
+
+    actualizar() {
+        this.dibujoCuerpo();
+        this.dibujo();
+        if (this.teclas.A) {
+            this.rotacion -= 0.04;
+        }
+        if (this.teclas.D) {
+            this.rotacion += 0.04;        }
+        this.posicion.x += Math.cos(this.rotacion) * this.velocidad;
+        this.posicion.y += Math.sin(this.rotacion) * this.velocidad;
+        
+        
+    }
+
+    dibujoCuerpo() {
+
+        // con this.body(que es donde se 'guarda; el cuerpo del snake) se agrega un nuevo cuerpo en la primera posicion
+        this.body[0].path.unshift({
+            x: this.posicion.x,
+            y: this.posicion.y
+        })
+        // llamamos a la fn dibujo para que se dibuje el cuerpo
+        this.body[0].dibujo();
+
+        for (let i = 1; i < this.body.length; i++) {
+            this.body[i].path.unshift(this.body[i-1].path.pop());
+            this.body[i].dibujo();
+        }
+        this.body[this.body.length - 1].path.pop();
+    }
+
+    dibujo() {
+        this.contexto.save();
+
+        this.contexto.translate(this.posicion.x, this.posicion.y);
+        this.contexto.rotate(30 * Math.PI / 180);
+        this.contexto.translate(-this.posicion.x, -this.posicion.y);
+        this.dibujoCabeza();
+        this.contexto.restore();
+    }
+
+    tecladoPulse() {
+        document.addEventListener("keydown", (e) => {
+            if(e.key == 'a' || e.key == 'A' || e.key == 'ArrowLeft' ) {
+                this.teclas.A = true;
+                
+            }
+            if(e.key == 'd' || e.key == 'D' || e.key == 'ArrowRight') {
+                this.teclas.D = true;
+                
+            }
+        })
+        
+        document.addEventListener("keyup", (e) => {
+            if(e.key == 'a' || e.key == 'A' || e.key == 'ArrowLeft') {
+                this.teclas.A = false;
+                
+            }
+            if(e.key == 'd' || e.key == 'D' || e.key == 'ArrowRight') {
+                this.teclas.D = false;
+                
+            }
+        })
+    }
+}
+
+// creamos una instancia de la mismisima clase snake
+
+const SnakeFrost = new snake({x: 100, y: 100}, 13, 2, "#ff0094", ctx);
+SnakeFrost.InicioJuego();
+const manzanaFood = new apple({x: 100, y: 100}, 8, "red", ctx);
 
 
 
+
+/* ------ solo dibuja el fondo -------
+* * * *  columnas en el bucle width
+* * * *  filas en el bucle height
+*/
+function fondoSnake() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#1B1C30";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for(let i = 0; i < canvas.height; i+= 90) {
+        for(let j = 0; j < canvas.width; j+= 90) {
+            ctx.fillStyle = "#23253C";
+            ctx.fillRect(j, i, 70, 70);
+        }
+    }
+}
+
+function InitGame() {
+    fondoSnake();
+    SnakeFrost.actualizar();
+    manzanaFood.dibujo();
+    manzanaFood.colision(SnakeFrost);
+    requestAnimationFrame(InitGame);
+}
+InitGame(); 

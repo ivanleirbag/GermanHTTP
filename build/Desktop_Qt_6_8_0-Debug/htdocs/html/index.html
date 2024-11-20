@@ -16,6 +16,9 @@
 
 </head>
 <body>
+
+
+
     
     <div class="navbar">
 
@@ -27,9 +30,7 @@
 
     </div>
 
-    <div class="newGamesBanner">
-        <h2>Nuevos</h2>
-    </div>
+
 
 
     <div class="titleGames">
@@ -45,13 +46,15 @@
 
 
     <div class="cajaGames">
-        <a class="inCajaGames" href="race.html">
-            <img  src="../img/auto.png" class="zoomer" alt="" srcset="">
+        <a class="inCajaGames" href="/race4">
+            <img  src="../img/auto.png" class="zoomer" alt="race" srcset="">
             <h2 class="textGames">R A C E</h2>
+            <button class="boton">J U G A R</button>
         </a>
-        <a class="inCajaGames" href="../html/snake/snake.html">
-            <img class="rotateInLeft" src="../img/serpiente.png" alt="" srcset="">
+        <a class="inCajaGames" href="/html/snake.html">
+            <img class="rotateInLeft" src="../img/serpiente.png" alt="snake" srcset="">
             <h2 class="textGames">S N A K E</h2>
+            <button class="boton">J U G A R</button>
         </a>
     </div>
 
@@ -62,14 +65,16 @@
 
 
 
+
 <script>
-	VanillaTilt.init(document.querySelectorAll(".inCajaGames, .textGames, .imgGames")
+	VanillaTilt.init(document.querySelectorAll(".inCajaGames, .textGames, .imgGames, .boton")
     ,{
         max: 25,
     speed: 400,
     scale: 1.1,
 
 });
+
 </script>
 </body>
 </html>
