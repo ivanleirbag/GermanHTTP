@@ -31,6 +31,7 @@ public:
      */
     bool isOnTrack(int x, int y);
 
+    void debugMask();
 
     bool isOnTrack(Car& car);
 
@@ -42,7 +43,9 @@ public:
 
 private:
     QString backgroundDir;
-    QSet<QPoint> trackPixels;
+    QImage trackMask;
+    int trackWidth;
+    int trackHeight;
     QByteArray backgroundImage;
 
     void loadTrackFromImage(QString& imagePath);

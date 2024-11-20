@@ -16,11 +16,13 @@ public:
     //Public Vars
     QString ID;
     int imgID;
-    int posX;
-    int posY;
+    float posX;
+    float posY;
     int speed;
     float direction;
-    QPoint position;
+    QString clientip;
+    qint16 clientport;
+    QPointF position;
     Hitbox hitbox;
 
     //Public Funcs
@@ -35,7 +37,7 @@ public:
      * @param initX
      * @param initY
      */
-    Car(QString& carImgDir, int simgID, QString& clientIP, int initX, int initY, int radius, float sDirection);
+    Car(QString& carImgDir, int simgID, float initX, float initY, float radius, float sDirection, QString sclientip, qint16 sclientport);
 
     /**
      * @brief getImage
@@ -67,8 +69,8 @@ public:
 private:
     //Private Variables
     QByteArray image;
-    int prevPosX;
-    int prevPosY;
+    float prevPosX;
+    float prevPosY;
     int prevSpeed;
     float prevDirection;
 

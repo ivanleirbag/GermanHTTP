@@ -3,27 +3,31 @@
 RaceTrack::RaceTrack(QString &pathMapDir, QString &backgroundDir){
     loadTrackFromImage(pathMapDir);
     setBackgroundImage(backgroundDir);
+
 }
 
 bool RaceTrack::isOnTrack(int x, int y)
 {
-    return trackPixels.contains(QPoint(x, y));
+    if (x < 0 || x >= trackMask.width() || y < 0 || y >= trackMask.height()) {
+        return false;
+    }
+    return trackMask.pixelIndex(x, y) == 1;
 }
+
 
 bool RaceTrack::isOnTrack(Car &car)
 {
-    QPoint center = car.hitbox.center;
-    int radius = car.hitbox.radius;
+    QPointF center = car.hitbox.center;
+    float radius = car.hitbox.radius;
 
-    const int numSegments = 16;
-    const double angleIncrement = 2 * M_PI / numSegments;
+    int numSegments = 6;
+    double angleIncrement = 2 * M_PI / numSegments;
 
     for (int i = 0; i < numSegments; ++i) {
         double angle = i * angleIncrement;
-        int checkX = center.x() + static_cast<int>(radius * qCos(angle));
-        int checkY = center.y() + static_cast<int>(radius * qSin(angle));
-
-        if (!isOnTrack(checkX, checkY)) {
+        int checkX =  static_cast<int>(center.x() + (radius * qCos(angle)));
+        int checkY =  static_cast<int>(center.y() + (radius * qSin(angle)));
+        if (isOnTrack(checkX, checkY) == false) {
             return false;
         }
     }
@@ -32,25 +36,33 @@ bool RaceTrack::isOnTrack(Car &car)
 }
 
 
-
 void RaceTrack::loadTrackFromImage(QString &pathMapDir) {
     QImage image(pathMapDir);
     QColor color;
-
     if (image.isNull()) {
         qWarning("No se pudo cargar la imagen de la pista.");
         return;
     }
 
+    trackMask = QImage(image.size(), QImage::Format_Mono);
+    trackMask.fill(0);
+
     for (int y = 0; y < image.height(); ++y) {
         for (int x = 0; x < image.width(); ++x) {
             color = image.pixelColor(x, y);
-            if (color == Qt::black) {
-                trackPixels.insert(QPoint(x, y));
+            bool isBlack = (color.redF() < 0.2 && color.greenF() < 0.2 && color.blueF() < 0.2);
+            if (isBlack) {
+                trackMask.setPixel(x, y, 1);
             }
         }
     }
+
+    qDebug() << "Máscara de pista cargada. Tamaño:" << trackMask.size();
+    qDebug() << "Mascara: " << trackMask.colorTable();
+    qDebug() << trackMask.save("trackMask_debug.png");
+
 }
+
 
 void RaceTrack::setBackgroundImage(QString &backgroundDir)
 {

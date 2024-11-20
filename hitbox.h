@@ -7,12 +7,12 @@
 class Hitbox {
 public:
     //Public Vars
-    QPoint center;
-    int radius;
+    QPointF center;
+    float radius;
 
-    Hitbox(int radius);
+    Hitbox(float radius);
 
-    void updatePosition(QPoint& newPos);
+    void updatePosition(QPointF& newPos);
 
     bool collidesWith(Hitbox& other);
 };

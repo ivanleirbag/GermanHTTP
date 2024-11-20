@@ -2,8 +2,6 @@
 #define MAINWINDOW_H
 
 #include "racetrack.h"
-#include "car.h"
-#include "hitbox.h"
 #include "glm.h"
 
 
@@ -16,7 +14,6 @@
 #include <QRegularExpression>
 #include <QJsonObject>
 #include <QJsonDocument>
-#include <QTimer>
 
 
 #include <QtNetwork/QTcpServer>
@@ -67,7 +64,6 @@ private:
     QList<QTcpSocket *>clients;
     QList<QTcpSocket *> race4Clients;
     GLM *glm;
-    QTimer *gameTimer;
 
     //WORKING DIRECTORY
     QString workingDir = QCoreApplication::applicationDirPath();
