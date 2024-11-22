@@ -3,19 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Viboronga </title>
+    <title>Snake</title>
 
     <link rel="stylesheet" href="../css/snake.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
 </head>
 <body>
 
 
+    <div id="gameContainer">
 
-    <canvas id="canvas"></canvas>
+        <div id="topScoresContainer">
+            <div class="InputNombre">
+                <h2>nombre</h2>
+                <input id="input-texto" type="text" value="Jugador">
+            </div>
+            <div class="colorSeccion">
+                <h2>colores</h2>
+                <div class="color-options">
+                    <div class="color-option" style="background-color: #FF0000;" data-color="#FF0000">&nbsp;</div>
+                    <div class="color-option" style="background-color: #00FF00;" data-color="#00FF00">&nbsp;</div>
+                    <div class="color-option" style="background-color: #0000FF;" data-color="#0000FF">&nbsp;</div>
+                </div>
+                </div>
+        </div>
+    
+        <canvas id="canvas"></canvas>
+
+
+        <div id="topScoresContainer">
+            <h2>Top 5 Scores</h2>
+            <div class="puntosRecord">
+                <ul id="topScoresList">
+                    <!-- Aquí se mostrarán los puntajes -->
+                </ul>
+            </div>
+
+            <div class="puntosActual">
+                <h2 class="textPuntos">puntos</h2>
+                <span id="puntos">0</span>
+            </div>
+        </div>
+    </div>
 
     <script src="../js/snake.js"></script>
 </body>

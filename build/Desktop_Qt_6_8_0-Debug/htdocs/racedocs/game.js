@@ -3,6 +3,8 @@ const ctx = canvas.getContext('2d');
 canvas.width = 1000;
 canvas.height = 750;
 
+let isUpdating = false; 
+
 let carImages = [];
 let carState = {
     //id: "",
@@ -13,7 +15,7 @@ let carState = {
     direction: 0
 };
 
-const serverUrl = 'http://localhost:8080';
+const serverUrl = window.location.origin;
 
 // Cargar el fondo del circuito
 let trackImage = new Image();
@@ -116,6 +118,10 @@ document.addEventListener('keydown', (event) => {
 
 // Enviar el estado del auto al servidor
 async function sendCarState() {
+    if (isUpdating) return;
+
+    isUpdating = true;
+
     try {
         const response = await fetch(`${serverUrl}/race4/updateState`, {
             method: 'POST',
@@ -136,6 +142,8 @@ async function sendCarState() {
         updateGameState(gameState);
     } catch (error) {
         console.error("Error al enviar el estado del auto:", error);
+    } finally {
+        isUpdating = false;
     }
 }
 
@@ -178,7 +186,7 @@ function updateGameState(gameState) {
 
 // Controlar el intervalo para enviar los datos
 let lastUpdateTime = 0;
-const updateInterval = 70; // 100ms, es decir, 10 veces por segundo
+const updateInterval = 150;
 
 // Loop de renderizado y actualización
 function gameLoop(timestamp) {

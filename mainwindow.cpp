@@ -400,6 +400,7 @@ void MainWindow::onClientReqstPOST(QString uri,  QTcpSocket* client, const QByte
     }
 
     //WRITES THE RESOURCE
+    fileRequested.resize(0);
     fileRequested.write(dataSent);
     fileRequested.close();
 

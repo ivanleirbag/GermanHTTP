@@ -10,3 +10,168 @@ body {
     background: radial-gradient(circle, rgba(50,59,139,1) 0%, rgba(39,45,85,1) 100%);
 
 }
+
+
+/* estilos para el menu */
+
+/* Estilo para el contenedor principal */
+#gameContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto;
+}
+
+/* Estilo para el canvas */
+#canvas {
+    background-color: #000;
+    border-radius: 10px;
+    width: 500px; 
+    height: 500px; 
+}
+
+/* Estilo para el contenedor de puntajes */
+#topScoresContainer {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: #1B1C30;
+    padding: 10px;
+    border-radius: 3%;
+    width: 300px;
+    height: 480px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+#topScoresContainer h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+
+#topScoresList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+
+#topScoresList li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+#puntosRecord {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topScoresList li{
+    margin-top: 30px;
+}
+
+
+/* Estilo para elmenu */
+#menuContainer {
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Press Start 2P', sans-serif;
+    position: relative;
+    left: 25rem;
+}
+
+#menuContainer h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#menuContainer form {
+    display: inline-block;
+}
+
+#menuContainer input {
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#menuContainer button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#menuContainer button:hover {
+    background-color: #555;
+}
+
+/* para el contenedor de puntos */
+
+.puntosActual {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#puntos {
+    margin-top: 20px;
+    color: #f1c40f;
+}
+
+.InputNombre {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 10px;
+    border-radius: 3%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.InputNombre h2 {
+    font-size: .5rem;
+}
+
+.InputNombre input {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    height: 12px;
+    display: flex;
+    font-size: 10px;
+    font-family: 'Press Start 2P', sans-serif;
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+
+
+.color-option {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 25px;
+    cursor: pointer;
+}
